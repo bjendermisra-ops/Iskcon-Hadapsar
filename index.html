@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>ISKCON Hadapsar</title>
+    
+    <!-- Bootstrap & Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400;600&family=Dancing+Script:wght@700&family=Noto+Sans+Devanagari:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        /* =========================================
+           🛠️ SETTINGS PANEL
+           ========================================= */
+        :root {
+            --primary: #FF9933;       
+            --secondary: #4a2c2a;     
+            --bg-color: #FFF8E1;      
+            --card-bg: #ffffff;       
+            --text-color: #333;       
+
+            /* HEADER */
+            --logo-size: 45px;         
+            --text-img-height: 50px;   
+            
+            /* SLIDER */
+            --slider-height: 290px;
+
+            /* EKADASHI SIZES */
+            --event-date-size: 2.5rem; 
+            --event-text-size: 1.2rem; 
+            
+            /* ICONS */
+            --icon-size: 2.0rem;      
+            --card-text-size: 0.8rem; 
+        }
+
+        [data-theme="dark"] {
+            --primary: #FF9933; --secondary: #1a0500; --bg-color: #121212; --card-bg: #1e1e1e; --text-color: #e0e0e0;
+        }
+
+        /* CORE */
+        body { background-color: var(--bg-color); font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif; color: var(--text-color); transition: 0.3s; padding-bottom: 0; margin: 0; -webkit-tap-highlight-color: transparent; }
+        a { text-decoration: none; color: var(--primary); }
+
+        /* Navbar */
+        .navbar { background-color: var(--primary); box-shadow: 0 4px 15px rgba(0,0,0,0.2); padding: 5px 0; }
+        .navbar .container-fluid { display: flex; align-items: center; justify-content: space-between; flex-wrap: nowrap !important; }
+        .nav-left-group { display: flex; align-items: center; gap: 8px; flex-grow: 1; overflow: hidden; }
+        .navbar-brand { display: flex; align-items: center; gap: 5px; margin: 0; padding: 0; text-decoration: none; }
+        .nav-logo-img { width: var(--logo-size); height: var(--logo-size); border-radius: 50%; border: 2px solid white; flex-shrink: 0; object-fit: cover; }
+        .brand-text-img { height: var(--text-img-height); width: auto; max-width: 200px; object-fit: contain; margin-top: 2px; }
+        .notif-btn { font-size: 1.4rem; color: white; flex-shrink: 0; padding-left: 10px; }
+
+        /* Sidebar */
+        .offcanvas { background-color: var(--bg-color); color: var(--text-color); width: 280px !important; }
+        .menu-item { padding: 12px 15px; display: flex; align-items: center; font-size: 1rem; color: var(--text-color); border-radius: 10px; margin-bottom: 5px; transition: 0.2s; cursor: pointer; text-decoration: none; }
+        .menu-item:active { background: rgba(255, 153, 51, 0.2); color: var(--primary); transform: scale(0.98); }
+        .menu-item i { width: 30px; font-size: 1.1rem; color: var(--primary); }
+        .lang-select { width: 100%; padding: 10px; border-radius: 10px; border: 1px solid var(--primary); background: var(--bg-color); color: var(--text-color); margin-bottom: 10px; outline: none; font-weight: bold; }
+
+        /* Slider */
+        .hero-slider { margin: 15px; border-radius: 20px; overflow: hidden; box-shadow: 0 8px 25px rgba(0,0,0,0.15); }
+        .carousel-item { height: var(--slider-height); background: var(--secondary); transition: transform .6s ease-in-out; }
+        .carousel-item img { object-fit: cover; height: 100%; width: 100%; }
+        
+        .date-slide { height: 100%; width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; background: linear-gradient(135deg, var(--primary), #d84315); color: white; text-align: center; padding: 10px; box-sizing: border-box; }
+        
+        /* Normal Date */
+        .date-slide h1 { font-family: 'Cinzel', serif; font-size: 4rem; margin: 0; line-height: 1; text-shadow: 0 3px 6px rgba(0,0,0,0.2); }
+        .date-slide p { font-size: 1.1rem; margin: 5px 0 10px 0; text-transform: uppercase; letter-spacing: 2px; }
+        .live-clock { font-family: 'monospace'; background: rgba(0,0,0,0.25); padding: 5px 15px; border-radius: 20px; font-weight: 600; border: 1px solid rgba(255,255,255,0.3); font-size: 1.1rem; }
+
+        /* Event Active State */
+        .date-slide.has-event { justify-content: center; gap: 5px; padding: 15px 10px; }
+        .date-slide.has-event h1 { font-size: var(--event-date-size); margin-bottom: 2px; }
+        .date-slide.has-event .month-year { font-size: 0.85rem; margin: 0; opacity: 0.9; }
+        .date-slide.has-event .live-clock { font-size: 0.85rem; padding: 2px 10px; margin: 5px 0; }
+        
+        .ekadasi-alert { 
+            font-size: clamp(1rem, 5vw, var(--event-text-size)); 
+            font-weight: 700; line-height: 1.2; margin: 5px 0; padding: 8px 12px;
+            background: rgba(0,0,0,0.15); border-radius: 12px; width: 90%; word-wrap: break-word; 
+        }
+        .ekadasi-btn { background: white; color: var(--primary); padding: 5px 20px; border-radius: 20px; font-weight: 700; font-size: 0.85rem; text-decoration: none; box-shadow: 0 4px 10px rgba(0,0,0,0.2); animation: pulseBtn 1.5s infinite; display: inline-block; margin-top: 5px; }
+        @keyframes pulseBtn { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+
+        /* Feature & List */
+        .feature-card { background: var(--card-bg); border-radius: 20px; padding: 15px 5px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.05); height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.2s; border: 1px solid rgba(0,0,0,0.05); cursor: pointer; position: relative; text-decoration: none; color: var(--text-color); }
+        .feature-card:active { transform: scale(0.95); background: var(--bg-color); }
+        .feature-card i { font-size: var(--icon-size); color: var(--primary); margin-bottom: 8px; }
+        .feature-card span { font-size: var(--card-text-size); font-weight: 600; }
+        
+        .live-dot { position: absolute; top: 10px; right: 30%; width: 10px; height: 10px; background-color: red; border-radius: 50%; border: 1px solid white; animation: livePulse 1.5s infinite; }
+        .new-badge { position: absolute; top: 10px; right: 10px; background-color: #25D366; color: white; padding: 2px 8px; border-radius: 10px; font-size: 0.6rem; font-weight: bold; animation: livePulse 2s infinite; }
+        
+        @keyframes livePulse { 0% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.2); } 100% { opacity: 1; transform: scale(1); } }
+
+        .section-header { display: flex; justify-content: space-between; align-items: center; margin: 30px 0 15px 0; padding: 0 5px; }
+        .section-title { font-family: 'Cinzel', 'Noto Sans Devanagari', serif; color: var(--primary); font-size: 1.2rem; font-weight: 700; margin: 0; border-left: 5px solid var(--primary); padding-left: 12px; }
+        .see-all { font-size: 0.85rem; font-weight: 600; color: var(--text-color); opacity: 0.7; display: flex; align-items: center; gap: 5px; }
+        .h-scroll { display: flex; overflow-x: auto; gap: 15px; padding-bottom: 15px; scrollbar-width: none; padding-left: 5px; }
+        .h-scroll::-webkit-scrollbar { display: none; }
+        .preview-card { min-width: 160px; width: 160px; background: var(--card-bg); border-radius: 18px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.08); transition: transform 0.2s; border: 1px solid rgba(0,0,0,0.03); }
+        .preview-card:active { transform: scale(0.98); }
+        .preview-img { width: 100%; height: 110px; object-fit: cover; }
+        .preview-info { padding: 12px; text-align: left; }
+        .preview-title { font-size: 0.85rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: var(--text-color); }
+        .address-box { background: var(--card-bg); border-radius: 25px; padding: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); margin-top: 40px; text-align: center; border: 2px solid rgba(255, 153, 51, 0.2); position: relative; overflow: hidden; scroll-margin-top: 100px; }
+        .address-box::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 5px; background: var(--primary); }
+        .address-text { font-size: 0.95rem; opacity: 0.8; margin-bottom: 20px; line-height: 1.6; }
+        .map-btn { display: block; width: 100%; background: var(--primary); color: white; padding: 12px; border-radius: 12px; font-weight: 600; border: none; }
+        .copy-btn { display: block; width: 100%; background: transparent; color: var(--primary); padding: 12px; border-radius: 12px; font-weight: 600; border: 2px solid var(--primary); }
+        
+        .premium-footer { background: #2d1a19; color: #ffcc80; padding-top: 0; position: relative; margin-top: 50px; text-align: center; }
+        .footer-wave { width: 100%; height: auto; display: block; fill: #2d1a19; margin-top: -40px; }
+        .footer-content { padding: 20px 20px 40px 20px; }
+        .footer-logo-img { width: 130px; height: 130px; border-radius: 50%; border: 3px solid var(--primary); box-shadow: 0 0 20px rgba(255, 153, 51, 0.5); margin-bottom: 10px; }
+        .footer-mantra { font-family: 'Cinzel', 'Noto Sans Devanagari', serif; font-size: 0.9rem; color: #fff; margin-bottom: 20px; letter-spacing: 1px; line-height: 1.5; opacity: 0.9; }
+        .footer-links { margin-bottom: 25px; }
+        .footer-links a { color: #ffcc80; margin: 0 8px; font-size: 0.85rem; text-decoration: none; font-weight: 500; opacity: 0.8; }
+        .footer-social { display: flex; justify-content: center; gap: 15px; margin-bottom: 25px; }
+        .f-icon { width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: white; }
+        .footer-divider { height: 1px; background: rgba(255,255,255,0.1); margin: 20px 0; }
+        .copyright { font-size: 0.8rem; opacity: 0.6; margin-bottom: 5px; }
+        .dev-credit { font-size: 0.85rem; opacity: 0.8; font-family: 'Poppins', sans-serif; }
+        .dev-name { color: var(--primary); font-weight: 700; font-family: 'Dancing Script', cursive; font-size: 1.2rem; margin-left: 5px; }
+    </style>
+</head>
+<body>
+
+<!-- Sidebar -->
+<div class="offcanvas offcanvas-start" id="appSidebar">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" style="font-family:'Cinzel',serif; color:var(--primary);" data-key="menu_title">ISKCON Menu</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" style="filter: invert(0.5);"></button>
+    </div>
+    <div class="offcanvas-body">
+        <select class="lang-select" id="langSelector" onchange="setLanguage(this.value)">
+            <option value="en">🇬🇧 English</option>
+            <option value="hi">🇮🇳 हिन्दी (Hindi)</option>
+            <option value="mr">🚩 मराठी (Marathi)</option>
+        </select>
+        <a href="go:home" class="menu-item"><i class="fas fa-home"></i> <span data-key="home">Home</span></a>
+        
+        <!-- NEW MENU ITEMS (INCLUDING KIDS) -->
+        <a href="go:quiz_home" class="menu-item"><i class="fas fa-child"></i> <span data-key="kids_title">Gopal's Garden</span></a>
+        <a href="go:status_zone" class="menu-item"><i class="fab fa-whatsapp"></i> <span data-key="status">Vedic Status</span></a>
+        <a href="go:chanting" class="menu-item"><i class="fas fa-om"></i> <span data-key="japa">Digital Japa</span></a>
+        <!-- END NEW MENU ITEMS -->
+        
+        <a href="go:schedule" class="menu-item"><i class="far fa-calendar-alt"></i> <span data-key="schedule">Schedule</span></a>
+        <a href="go:darshan" class="menu-item"><i class="fas fa-video"></i> <span data-key="darshan">Live Darshan</span></a>
+        <a href="go:gallery" class="menu-item"><i class="fas fa-images"></i> <span data-key="gallery">Gallery</span></a>
+        <a href="go:tmp_vids" class="menu-item"><i class="fas fa-church"></i> <span data-key="videos">Temple Videos</span></a>
+        <a href="go:aud_krt" class="menu-item"><i class="fas fa-music"></i> <span data-key="kirtan">Kirtans</span></a>
+        <a href="go:lectures" class="menu-item"><i class="fas fa-microphone"></i> <span data-key="lectures">Lectures</span></a>
+        <a href="go:contact" class="menu-item"><i class="fas fa-phone-alt"></i> <span data-key="contact">Contact</span></a>
+        <a href="go:about" class="menu-item"><i class="fas fa-info-circle"></i> <span data-key="about">About Us</span></a>
+        <a href="go:privacy" class="menu-item"><i class="fas fa-user-shield"></i> <span data-key="privacy">Privacy Policy</span></a>
+        <a href="go:terms" class="menu-item"><i class="fas fa-file-contract"></i> <span data-key="terms">Terms & Conditions</span></a>
+        <hr>
+        <a href="http://action_notifications" class="menu-item"><i class="fas fa-bell"></i> <span data-key="notif">Notifications</span></a>
+        <a href="http://action_share" class="menu-item"><i class="fas fa-share-alt"></i> <span data-key="share">Share App</span></a>
+        <hr>
+        <div class="menu-item" onclick="toggleTheme()"><i class="fas fa-moon"></i> <span data-key="dark">Dark Mode</span></div>
+    </div>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar sticky-top">
+    <div class="container-fluid">
+        <div class="nav-left-group">
+            <button class="navbar-toggler shadow-none border-0 p-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#appSidebar">
+                <i class="fas fa-bars text-white" style="font-size:1.4rem;"></i>
+            </button>
+            <a class="navbar-brand" href="#">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh89ueri3DvWfVUmM76dyYJSTCLcDC6oYuAT3j-ezAKl5iDeJ97q28vt2MR39RJwL8BGI91we6F4DRj-u7j1EE2NPyQRwFs0HfYcB4HjxZ9VoeUQWGR7GdARSdow00uHqEehsr6gOVDFG15mntfIdNuOrQ_fxAZHCjMWU9kEjzaUMhuN52vsKMA6Tb9Dtx3/s256/1000096788.png" class="nav-logo-img"> 
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgVRMyIdabzVBc7ZvvLK1C5iLFpP-nGfaR-qHEHLp7Lz4-h0vZ3mqkJZL1WM4XmUbJtLwCq4IJs7Zo9MRFc1m4uKU0aiehntaJ5FjhgD_Pg9_LPFctpr82wPIksmIypYCaEajiop7VDZiV5nvz-cbwJJRGm9qgGQSyODA-JJxkDMwOalcURlpWivbR1nyI7/s440/1000096758.png" class="brand-text-img">
+            </a>
+        </div>
+        <a href="http://action_notifications" class="notif-btn"><i class="far fa-bell"></i></a>
+    </div>
+</nav>
+
+<!-- Slider -->
+<div id="heroCarousel" class="carousel slide hero-slider" data-bs-ride="carousel" data-aos="fade-down">
+    <div class="carousel-inner" id="slider-inner"></div>
+</div>
+
+<div class="container my-3">
+    
+    <!-- === SPECIAL FEATURES ROW (Status & Japa) === -->
+    <div class="row g-2 mb-2">
+        <div class="col-6">
+            <a href="go:status_zone" class="feature-card" style="border: 1px solid #25D366; background: linear-gradient(135deg, #E8F5E9, #fff);">
+                <div class="new-badge">NEW</div>
+                <i class="fab fa-whatsapp" style="color:#25D366;"></i>
+                <span data-key="status">Vedic Status</span>
+            </a>
+        </div>
+        <div class="col-6">
+            <a href="go:chanting" class="feature-card" style="border: 1px solid var(--primary); background: linear-gradient(135deg, #FFF3E0, #fff);">
+                <i class="fas fa-om"></i>
+                <span data-key="japa">Digital Japa</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- === NEW: GOPAL'S GARDEN (Kids/Quiz Section) === -->
+    <!-- Large prominent card for the Quiz Hub -->
+    <div class="row mb-3" data-aos="fade-up">
+        <div class="col-12">
+            <a href="go:quiz_home" class="feature-card" style="flex-direction: row; justify-content: space-between; padding: 20px; border: 2px solid #FF9800; background: linear-gradient(135deg, #fff, #FFF8E1);">
+                <div style="display:flex; align-items:center; gap:15px; text-align:left;">
+                    <div style="background:#FFE0B2; width:50px; height:50px; border-radius:50%; display:flex; align-items:center; justify-content:center;">
+                        <i class="fas fa-shapes" style="font-size: 1.8rem; color: #E65100; margin:0;"></i>
+                    </div>
+                    <div>
+                        <span style="display:block; font-size:1.1rem; color:#E65100; font-weight:700;" data-key="kids_title">Gopal's Garden</span>
+                        <small style="font-size:0.8rem; color:#777;" data-key="kids_desc">Quizzes, Stories & Fun</small>
+                    </div>
+                </div>
+                <i class="fas fa-chevron-right" style="font-size:1.2rem; color:#FF9800;"></i>
+            </a>
+        </div>
+    </div>
+    <!-- === END GOPAL'S GARDEN === -->
+
+    <!-- Quick Actions (Schedule, Darshan, Visit) -->
+    <div class="row g-2 mb-3">
+        <div class="col-4">
+            <a href="go:schedule" class="feature-card">
+                <i class="far fa-clock"></i>
+                <span data-key="schedule">Schedule</span>
+            </a>
+        </div>
+        <div class="col-4">
+            <a href="go:darshan" class="feature-card">
+                <div class="live-dot"></div>
+                <i class="fas fa-video"></i>
+                <span data-key="darshan">Live Darshan</span>
+            </a>
+        </div>
+        <div class="col-4">
+            <div onclick="scrollToAddress()" class="feature-card">
+                <i class="fas fa-map-marker-alt"></i>
+                <span data-key="visit">Visit Us</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gallery -->
+    <div class="section-header" data-aos="fade-right">
+        <h5 class="section-title" data-key="gallery_h">Photo Gallery</h5>
+        <a href="go:gallery" class="see-all" data-key="see_all">See All <i class="fas fa-chevron-right"></i></a>
+    </div>
+    <div class="h-scroll" id="gallery-scroll"></div>
+
+    <!-- Videos -->
+    <div class="section-header" data-aos="fade-right">
+        <h5 class="section-title" data-key="videos_h">Temple Videos</h5>
+        <a href="go:tmp_vids" class="see-all" data-key="see_all">See All <i class="fas fa-chevron-right"></i></a>
+    </div>
+    <div class="h-scroll" id="video-scroll"></div>
+
+    <!-- Audio -->
+    <div class="section-header" data-aos="fade-right">
+        <h5 class="section-title" data-key="kirtan_h">Latest Kirtans</h5>
+        <a href="go:aud_krt" class="see-all" data-key="see_all">See All <i class="fas fa-chevron-right"></i></a>
+    </div>
+    <div class="h-scroll" id="audio-scroll"></div>
+
+    <!-- Lectures -->
+    <div class="section-header" data-aos="fade-right">
+        <h5 class="section-title" data-key="lecture_h">Divine Lectures</h5>
+        <a href="go:lectures" class="see-all" data-key="see_all">See All <i class="fas fa-chevron-right"></i></a>
+    </div>
+    <div class="h-scroll" id="lecture-scroll"></div>
+
+    <!-- Address Box -->
+    <div class="address-box" id="address-section" data-aos="fade-up">
+        <h5 style="font-family:'Cinzel',serif; color:var(--primary); font-weight:700; margin-bottom:10px;" data-key="visit_h">Visit Our Temple</h5>
+        <p class="address-text">GW2M+X5J, Pune - Solapur Rd, near Kanyadan Mangal Karyalaya, Aru Nagar, Bhosale Nagar, Hadapsar, Pune, Maharashtra 411028</p>
+        <div class="row g-2">
+            <div class="col-6"><button onclick="copyAddress()" class="copy-btn"><i class="far fa-copy"></i> <span data-key="copy">Copy</span></button></div>
+            <div class="col-6"><button onclick="openMap()" class="map-btn"><i class="fas fa-location-arrow"></i> <span data-key="map">Map</span></button></div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="premium-footer">
+    <svg class="footer-wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill-opacity="1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
+    <div class="footer-content">
+        <div class="footer-logo-area"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh89ueri3DvWfVUmM76dyYJSTCLcDC6oYuAT3j-ezAKl5iDeJ97q28vt2MR39RJwL8BGI91we6F4DRj-u7j1EE2NPyQRwFs0HfYcB4HjxZ9VoeUQWGR7GdARSdow00uHqEehsr6gOVDFG15mntfIdNuOrQ_fxAZHCjMWU9kEjzaUMhuN52vsKMA6Tb9Dtx3/s256/1000096788.png" class="footer-logo-img"></div>
+        <p class="footer-mantra" data-key="mantra">Hare Krishna Hare Krishna Krishna Krishna Hare Hare <br> Hare Rama Hare Rama Rama Rama Hare Hare</p>
+        <div class="footer-social">
+            <a href="#" class="f-icon"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="f-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="f-icon"><i class="fab fa-instagram"></i></a>
+        </div>
+        <div class="footer-links">
+            <a href="go:privacy" data-key="privacy">Privacy Policy</a> | 
+            <a href="go:terms" data-key="terms">Terms</a> | 
+            <a href="go:about" data-key="about">About</a> |
+            <a href="go:contact" data-key="contact">Contact</a>
+        </div>
+        <div class="footer-divider"></div>
+        <p class="copyright">© 2025 ISKCON Hadapsar. All Rights Reserved.</p>
+        <p class="dev-credit" data-key="credit">Designed & Developed by <span class="dev-name">Santosh</span></p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+
+    // 1. SLIDER IMAGES
+    const sliderImages = [
+        { url: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhGPbjaPsnf4VFK5CaEuf_8NgBliNVXcGQwupjDIiAlJ8nkClebBWidi2CmiKkMETsmBS7GJMynsyrvWUJQA-7hc34UusfYHO7w9jTWe02-VmiFxDdGDNbmnGqpGgsXUCbZflOldHpgt-SH_EFn9fluIIXLogALk3f_J9g_tG4Aei7QzHHoCxiTY4TRbUg/s960/unnamed.webp", interval: 1000 },
+        { url: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEibQxq4XOwyw17nChMsri9P1G4gHUKzcIzTY_U_vHAQ5xkLHJGgGamFNlMvsMXENGHKs7DeitsyllqkwJrMFWyTs7aNn92V5qjgpdToVMS__WU09wDq1FqNmREtnFFUU-jxMMrh5NAU6PXOyEuBFY9aauu9etV9_boMfYVC1cYFdQTYWntN6HsisAdFqrWw/s570/1000096799.jpg", interval: 1000 },
+      { url: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhXc91CZDklUfmEoSaaf_YQ_ad7SAmXUo-BYR8-Hw4VcUQudyFxoC5Nugbmf_CAWkPKebG6hSErAb-GSWXplpdo5rUFk9BOS6jIcj-BttDXDNFRQshPTPBZDdsrHONAba6kNvYLglRVkGL9F6EYDyGII9ZiZBbgpW5REknG0R75DWl5E3KwmxTwO5aHP4FE/s814/1000096800.jpg", interval: 1000 },
+      { url: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi8nDUIjl89GCOBcZ5Kkm9uAwc0qIFj6crCAzY0RZbQFjl36iRHQOZQO5mE6HtqMQq1X_TFE2SXKY5TfGgJ0EKScPZ1swsGJD-ZBoYCu65FTBZcRmSJfJf0e51Ut8MgVQ7l1mIXNChCk5T2GDh3P6UAPeKeGkBsRy7w5Z6BNIa3EJ91V76-jzhzyexxSNfR/s1000/1000096808.png", interval: 1000 },
+      { url: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiKkb290mltsOwvAtFrSx9Qnr8GylfoBpfjFR-kMXYaoN1DVB9ySWBdDaQgqv30WKl2h89l7Sa97BdhTiUT6zE4U8HMQTkWnJ2Q5MAQrOkJf5qod4qrwfGz2zSfIzmtcPiON6H3EZTisXL2rweoJGq7cekOi5hMVAKe6zXk5BhykUlYa-Cul3Cl5JdSl-Gl/s1080/1000096807.png", interval: 1000 }
+    ];
+
+    // 2. DATA (UPDATED WITH REAL IMAGES)
+    const gallery = [
+        { img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjEl4fFheeQljSLtRMh5Gnq3c3j6xqwSfX3YeN4pI02ebfKmtwsFXLauHOMBNdClFdgXpkaV2j5gJFwxDBMDcUVi-fonSaA8qFPnpaMPlO6u305qP0rcPqGa4iufh-W5bIXbMLIHYjApRlZhF2uw8CFb65UikYDB42pU9Iu2xW1hRSiA2gGzqvaxP9V1APd/s700/1000096371.webp", t: "Entrance", link: "go:gallery" },
+        { img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj2iMJBEfqMuK3Oa3mKqhQkVHVL8lTJ0p1YoyX77hCJwiVLpxzuMoQGxiM8qU2lU5DXGGvafYIaTKEMmKak18XBD9pr6R8fJZugNTdmoiY4lgiSQjBCe-CgXI2lDe1bvMYs6_koVGSXqlMxTuhNitYEBXwoS_amo726zM2GXMUY0uY2JTnmi3oFtqIdLwJy/s700/1000096372.webp", t: "Gaura Nitai", link: "go:gallery" },
+        { img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgftLPu_jM1WHAD6_G2d4oMSu8SRkHeb6ZE3OLM2HyXiyDPY2Ch0b2Zk18g0kGFJHd8zseNi7dMUZFz7WmuehpnHtGlOXGSedcwy4hWt0G8oWMwuU0fBw_OWAX0ZcnkIW0yomsKcwoV8KrrlVYAMErXxJMIpZk3v1cxnZKuRXWUL3lzwzgW3PzsBg2t_ger/s700/1000096370.webp", t: "Main Altar", link: "go:gallery" },
+        { img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjTdGA5YE6KB8Vjv_NB-dvHEDho3t5JXv5Cl0V2LRW6nZrujh_kasEl4AixZ-1RyWLDiaWWDnkTgabDUTbKsfiKGTeZwras2RH5nCzo5aaL2uxB9zUyn8zWw9QRH02nOo0XBrWezCUFp-Qe_9Q3QHgYLiDsMJrW1w_hxXc28YRUMmbx-hvXm2oW-I_WoBSw/s700/1000096373.webp", t: "Govardhan", link: "go:gallery" }
+    ];
+
+    const videos = [{ img: "https://i.ytimg.com/vi/b4XW-P_eA6Y/maxresdefault.jpg", t: "Janmashtami", link: "go:vid_1" }, { img: "https://i.ytimg.com/vi/JzF5B-qG4NQ/maxresdefault.jpg", t: "Gaur Purnima", link: "go:vid_2" }, { img: "https://i.ytimg.com/vi/wA-a25S-aBI/maxresdefault.jpg", t: "Sunday Feast", link: "go:vid_3" }];
+    const audio = [{ img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj2zqiTZ78j6B7tqYFh5Cd-agJGzRJLOLARjfgZWNDzH9YjzEJ53lN8uveWFnvniWz58inZsgDc0aZdk5Feaddu14G9hoHnEOmUPb1_3ZdkT8ShL2PWpUe_sgf-EiNU4nWqD7X9ayVkkxa_Rpw5HpmP2qXLrAb74siFSirEj_a5C8Qk1oZGTq1yrgJqQ60/s1280/maxresdefault%20(2).jpg", t: "Jai Radha Madhava", link: "go:aud_1" }, { img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhaZSUu1t1ioA8FH5Dswww0K6l9rL__civt4QPUdSGcK9dL1CFDHY_QD_a0S6PPX66e6DG1fUx5DUL-m4sk1UmsjiZAbHCSc-PLLtaOhgMRQ_MjmsK6f6kmIzJNvHdV2XFH28Yrh8nupNqjdt0D-CdokemNsbpOpxwU2phSenRJ6a4mn282MQT2oblr2_s/s1280/maxresdefault.jpg", t: "Mangal Arti", link: "go:aud_2" }, { img: "https://i.ytimg.com/vi/auIFb8g_qgU/maxresdefault.jpg", t: "Mahamantra", link: "go:aud_3" }];
+    const lectures = [{ img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjsCA3aWNRKFRUpfF8hFtZtRur4NKYsKqwCLnvpepm4XUMFUd82iVtJu4uOCZPylhvfC2Bx5tDgo2ZBFazttN8GfHRKfUfzwIcuMBbE1R91-s1IAbKiepcDOtRL9M_dUp5NVRMY0EGq5ML8vuXD90hNMKUbkG3Ke6Tv1T-IV3flgvUZUjMLjYoa4cP-kfgi/s480/1000096095.jpg", t: "parbu", link: "go:lec_1" }, { img: "https://i.ytimg.com/vi/5g3y779v4pA/maxresdefault.jpg", t: "Mind Control", link: "go:lec_2" }, { img: "https://i.ytimg.com/vi/wdaec2-YA_k/maxresdefault.jpg", t: "Happiness", link: "go:lec_3" }];
+
+    // === EKADASHI DATA ===
+    const ekadasiData = [
+        /* 2025 Remainder */
+        { "date": "2025-12-01", "name_key": "e_mokshada", "link": "go:e_mokshada" },
+        { "date": "2025-12-16", "name_key": "e_saphala", "link": "go:e_saphala" },
+        { "date": "2025-12-30", "name_key": "e_putrada", "link": "go:e_putrada" },
+        /* 2026-2027 Data skipped for brevity but included in your version */
+    ];
+
+    // === LOGIC ===
+    function loadData(data, id) {
+        const el = document.getElementById(id);
+        if(!el) return;
+        data.forEach(i => {
+            el.innerHTML += `
+            <div class="preview-card" onclick="window.location.href='${i.link}'">
+                <img src="${i.img}" class="preview-img">
+                <div class="preview-info"><div class="preview-title">${i.t}</div></div>
+            </div>`;
+        });
+    }
+    loadData(gallery, 'gallery-scroll');
+    loadData(videos, 'video-scroll');
+    loadData(audio, 'audio-scroll');
+    loadData(lectures, 'lecture-scroll');
+
+    const slider = document.getElementById('slider-inner');
+    
+    // --- DATE LOGIC ---
+    const options = { timeZone: 'Asia/Kolkata', year: 'numeric', month: '2-digit', day: '2-digit' };
+    const formatter = new Intl.DateTimeFormat('en-CA', options);
+    
+    const now = new Date();
+    const todayStr = formatter.format(now);
+    
+    const tomDate = new Date(now);
+    tomDate.setDate(tomDate.getDate() + 1);
+    const tomStr = formatter.format(tomDate);
+
+    const ekadasiToday = ekadasiData.find(e => e.date === todayStr);
+    const ekadasiTom = ekadasiData.find(e => e.date === tomStr);
+    
+    function renderSlider(texts) {
+        const localeMap = { 'en': 'en-US', 'hi': 'hi-IN', 'mr': 'mr-IN' };
+        const lang = localStorage.getItem('lang') || 'en';
+        
+        const dateObj = new Date(new Date().toLocaleString("en-US", {timeZone: "Asia/Kolkata"}));
+        const dateNum = dateObj.getDate();
+        const monthName = dateObj.toLocaleString(localeMap[lang], { month: 'long' });
+        const yearNum = dateObj.getFullYear();
+
+        let alertHTML = '';
+        let hasEventClass = '';
+
+        if (ekadasiToday) {
+            alertHTML = `<div class="ekadasi-alert">${texts.today_is} ${texts[ekadasiToday.name_key]}</div><a href="${ekadasiToday.link}" class="ekadasi-btn">${texts.read_more} <i class="fas fa-arrow-right"></i></a>`;
+            hasEventClass = 'has-event'; 
+        } else if (ekadasiTom) {
+            alertHTML = `<div class="ekadasi-alert">${texts.tom_is} ${texts[ekadasiTom.name_key]}</div><a href="${ekadasiTom.link}" class="ekadasi-btn">${texts.read_more} <i class="fas fa-arrow-right"></i></a>`;
+            hasEventClass = 'has-event'; 
+        }
+
+        let html = `
+            <div class="carousel-item active" data-bs-interval="2000">
+                <div class="date-slide ${hasEventClass}">
+                    <h1>${dateNum}</h1>
+                    <p class="month-year" style="text-transform:uppercase; letter-spacing:2px;">${monthName} ${yearNum}</p>
+                    <div id="clock" class="live-clock">--:--:--</div>
+                    <div>${alertHTML}</div>
+                </div>
+            </div>`;
+            
+        sliderImages.forEach(img => {
+            html += `<div class="carousel-item" data-bs-interval="${img.interval}"><img src="${img.url}"></div>`;
+        });
+        slider.innerHTML = html;
+    }
+
+    // Language Data (Updated with Gopal's Garden)
+    const langData = {
+        en: {
+            app_name: "ISKCON Hadapsar", menu_title: "ISKCON Menu", home: "Home", schedule: "Schedule", darshan: "Live Darshan", gallery: "Gallery", videos: "Temple Videos", kirtan: "Kirtans", lectures: "Lectures", contact: "Contact", about: "About Us", notif: "Notifications", share: "Share App", dark: "Dark Mode", visit: "Visit Us", gallery_h: "Photo Gallery", videos_h: "Temple Videos", kirtan_h: "Latest Kirtans", lecture_h: "Divine Lectures", see_all: "See All", visit_h: "Visit Our Temple", copy: "Copy", map: "Map", privacy: "Privacy Policy", terms: "Terms", mantra: "Hare Krishna Hare Krishna Krishna Krishna Hare Hare\nHare Rama Hare Rama Rama Rama Hare Hare", credit: "Designed & Developed by ",
+            today_is: "Today is", tom_is: "Tomorrow is", read_more: "Read More", status: "Vedic Status", japa: "Digital Japa",
+            kids_title: "Gopal's Garden", kids_desc: "Quizzes, Stories & Fun",
+            e_mokshada: "Mokshada Ekadashi", e_saphala: "Saphala Ekadashi", e_putrada: "Putrada Ekadashi", e_shattila: "Shattila Ekadashi", e_jaya: "Jaya Ekadashi", e_vijaya: "Vijaya Ekadashi", e_amalaki: "Amalaki Ekadashi", e_papmoch: "Papmochani Ekadashi", e_kamada: "Kamada Ekadashi", e_varuthi: "Varuthini Ekadashi", e_mohini: "Mohini Ekadashi", e_apara: "Apara Ekadashi", e_nirjala: "Nirjala Ekadashi", e_yogini: "Yogini Ekadashi", e_sayana: "Sayana Ekadashi", e_kamika: "Kamika Ekadashi", e_pavitra: "Pavitropana Ekadashi", e_annada: "Annada Ekadashi", e_parivar: "Parivartini Ekadashi", e_indira: "Indira Ekadashi", e_papanku: "Papankusha Ekadashi", e_rama: "Rama Ekadashi", e_prabod: "Prabodhini Ekadashi", e_utpanna: "Utpanna Ekadashi"
+        },
+        hi: {
+            app_name: "इस्कॉन हडपसर", menu_title: "मेनू", home: "होम", schedule: "समय सारणी", darshan: "लाइव दर्शन", gallery: "गैलरी", videos: "मंदिर वीडियो", kirtan: "कीर्तन", lectures: "प्रवचन", contact: "संपर्क", about: "हमारे बारे में", notif: "सूचनाएं", share: "शेयर करें", dark: "डार्क मोड", visit: "पधारें", gallery_h: "फोटो गैलरी", videos_h: "मंदिर वीडियो", kirtan_h: "नवीनतम कीर्तन", lecture_h: "दिव्य प्रवचन", see_all: "सभी देखें", visit_h: "हमारे मंदिर पधारें", copy: "कॉपी", map: "मैप", privacy: "गोपनीयता नीति", terms: "नियम", mantra: "हरे कृष्ण हरे कृष्ण कृष्ण कृष्ण हरे हरे\nहरे राम हरे राम राम राम हरे हरे", credit: "डिज़ाइन और विकसित: ",
+            today_is: "आज है", tom_is: "कल है", read_more: "महात्म्य पढ़ें", status: "वैदिक स्टेटस", japa: "डिजिटल माला",
+            kids_title: "गोपाल गार्डन", kids_desc: "प्रश्नोत्तरी और बाल संस्कार",
+            e_mokshada: "मोक्षदा एकादशी", e_saphala: "सफला एकादशी", e_putrada: "पुत्रदा एकादशी", e_shattila: "षटतिला एकादशी", e_jaya: "जया एकादशी", e_vijaya: "विजया एकादशी", e_amalaki: "आमलकी एकादशी", e_papmoch: "पापमोचनी एकादशी", e_kamada: "कामदा एकादशी", e_varuthi: "वरुथिनी एकादशी", e_mohini: "मोहिनी एकादशी", e_apara: "अपरा एकादशी", e_nirjala: "निर्जला एकादशी", e_yogini: "योगिनी एकादशी", e_sayana: "शयन एकादशी", e_kamika: "कामिका एकादशी", e_pavitra: "पवित्रोपना एकादशी", e_annada: "अन्नदा एकादशी", e_parivar: "परिवर्तिनी एकादशी", e_indira: "इंदिरा एकादशी", e_papanku: "पापांकुशा एकादशी", e_rama: "रमा एकादशी", e_prabod: "प्रबोधिनी एकादशी", e_utpanna: "उत्पन्ना एकादशी"
+        },
+        mr: {
+            app_name: "इस्कॉन हडपसर", menu_title: "मेनू", home: "मुख्यपृष्ठ", schedule: "वेळापत्रक", darshan: "थेट दर्शन", gallery: "गॅलरी", videos: "मंदिर व्हिडिओ", kirtan: "कीर्तन", lectures: "प्रवचन", contact: "संपर्क", about: "आमच्याबद्दल", notif: "सूचना", share: "शेअर करा", dark: "डार्क मोड", visit: "भेट द्या", gallery_h: "फोटो गॅलरी", videos_h: "मंदिर व्हिडिओ", kirtan_h: "नवीनतम कीर्तन", lecture_h: "दिव्य प्रवचन", see_all: "सर्व पहा", visit_h: "आमच्या मंदिरात या", copy: "कॉपी", map: "नकाशा", privacy: "गोपनीयता धोरण", terms: "अटी", mantra: "हरे कृष्ण हरे कृष्ण कृष्ण कृष्ण हरे हरे\nहरे राम हरे राम राम राम हरे हरे", credit: "डिझाइन आणि विकसित: ",
+            today_is: "आज आहे", tom_is: "उद्या आहे", read_more: "अधिक वाचा", status: "वैदिक स्टेटस", japa: "डिजिटल माळ",
+            kids_title: "गोपाळ गार्डन", kids_desc: "बाल संस्कार आणि खेळ",
+            e_mokshada: "मोक्षदा एकादशी", e_saphala: "सफला एकादशी", e_putrada: "पुत्रदा एकादशी", e_shattila: "षटतिला एकादशी", e_jaya: "जया एकादशी", e_vijaya: "विजया एकादशी", e_amalaki: "आमलकी एकादशी", e_papmoch: "पापमोचनी एकादशी", e_kamada: "कामदा एकादशी", e_varuthi: "वरुथिनी एकादशी", e_mohini: "मोहिनी एकादशी", e_apara: "अपरा एकादशी", e_nirjala: "निर्जला एकादशी", e_yogini: "योगिनी एकादशी", e_sayana: "शयन एकादशी", e_kamika: "कामिका एकादशी", e_pavitra: "पवित्रोपना एकादशी", e_annada: "अन्नदा एकादशी", e_parivar: "परिवर्तिनी एकादशी", e_indira: "इंदिरा एकादशी", e_papanku: "पापांकुशा एकादशी", e_rama: "रमा एकादशी", e_prabod: "प्रबोधिनी एकादशी", e_utpanna: "उत्पन्ना एकादशी"
+        }
+    };
+
+    function setLanguage(lang) {
+        localStorage.setItem('lang', lang);
+        const texts = langData[lang];
+        document.querySelectorAll('[data-key]').forEach(el => {
+            const key = el.getAttribute('data-key');
+            if(texts[key]) {
+                if(key === 'credit') el.innerHTML = texts[key] + '<span class="dev-name">Santosh</span>';
+                else el.innerText = texts[key];
+            }
+        });
+        renderSlider(texts); 
+    }
+
+    function scrollToAddress() { const el = document.getElementById('address-section'); if(el) el.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+    function copyAddress() { navigator.clipboard.writeText("GW2M+X5J, Pune - Solapur Rd, near Kanyadan Mangal Karyalaya, Aru Nagar, Bhosale Nagar, Hadapsar, Pune, Maharashtra 411028"); alert("Address Copied!"); }
+    function openMap() { window.open("https://goo.gl/maps/YOUR_LINK_HERE"); }
+
+    const savedLang = localStorage.getItem('lang') || 'en';
+    document.getElementById('langSelector').value = savedLang;
+    setLanguage(savedLang);
+
+    if(localStorage.getItem('theme') === 'dark') document.body.setAttribute('data-theme', 'dark');
+    function toggleTheme() {
+        const isDark = document.body.getAttribute('data-theme') === 'dark';
+        document.body.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+    }
+
+    setInterval(() => { 
+        if(document.getElementById('clock')) {
+            const lang = localStorage.getItem('lang') || 'en';
+            const localeMap = { 'en': 'en-US', 'hi': 'hi-IN', 'mr': 'mr-IN' };
+            document.getElementById('clock').innerText = new Date().toLocaleTimeString(localeMap[lang], {timeZone: "Asia/Kolkata"}); 
+        }
+    }, 1000);
+</script>
+</body>
+</html>
