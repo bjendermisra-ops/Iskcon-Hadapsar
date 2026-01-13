@@ -13,37 +13,10 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
-        /* =========================================
-           ðŸ› ï¸  SETTINGS PANEL
-           ========================================= */
-        :root {
-            --primary: #FF9933;       
-            --secondary: #4a2c2a;     
-            --bg-color: #FFF8E1;      
-            --card-bg: #ffffff;       
-            --text-color: #333;       
+        /* SETTINGS */
+        :root { --primary: #FF9933; --secondary: #4a2c2a; --bg-color: #FFF8E1; --card-bg: #ffffff; --text-color: #333; --logo-size: 45px; --text-img-height: 50px; --slider-height: 290px; --event-date-size: 2.5rem; --event-text-size: 1.2rem; --icon-size: 2.0rem; --card-text-size: 0.8rem; }
+        [data-theme="dark"] { --primary: #FF9933; --secondary: #1a0500; --bg-color: #121212; --card-bg: #1e1e1e; --text-color: #e0e0e0; }
 
-            /* HEADER */
-            --logo-size: 45px;         
-            --text-img-height: 50px;   
-            
-            /* SLIDER */
-            --slider-height: 290px;
-
-            /* EKADASHI SIZES */
-            --event-date-size: 2.5rem; 
-            --event-text-size: 1.2rem; 
-            
-            /* ICONS */
-            --icon-size: 2.0rem;      
-            --card-text-size: 0.8rem; 
-        }
-
-        [data-theme="dark"] {
-            --primary: #FF9933; --secondary: #1a0500; --bg-color: #121212; --card-bg: #1e1e1e; --text-color: #e0e0e0;
-        }
-
-        /* CORE */
         body { background-color: var(--bg-color); font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif; color: var(--text-color); transition: 0.3s; padding-bottom: 0; margin: 0; -webkit-tap-highlight-color: transparent; }
         a { text-decoration: none; color: var(--primary); }
 
@@ -61,42 +34,29 @@
         .menu-item { padding: 12px 15px; display: flex; align-items: center; font-size: 1rem; color: var(--text-color); border-radius: 10px; margin-bottom: 5px; transition: 0.2s; cursor: pointer; text-decoration: none; }
         .menu-item:active { background: rgba(255, 153, 51, 0.2); color: var(--primary); transform: scale(0.98); }
         .menu-item i { width: 30px; font-size: 1.1rem; color: var(--primary); }
-        .lang-select { width: 100%; padding: 10px; border-radius: 10px; border: 1px solid var(--primary); background: var(--bg-color); color: var(--text-color); margin-bottom: 10px; outline: none; font-weight: bold; }
+        .lang-select { width: 100%; padding: 10px; border-radius: 10px; border: 1px solid var(--primary); background: var(--bg-color); color: var(--text-color); margin-bottom: 10px; outline: none; font-weight: bold; font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif; }
 
         /* Slider */
         .hero-slider { margin: 15px; border-radius: 20px; overflow: hidden; box-shadow: 0 8px 25px rgba(0,0,0,0.15); }
         .carousel-item { height: var(--slider-height); background: var(--secondary); transition: transform .6s ease-in-out; position: relative; }
         .carousel-item img { object-fit: cover; height: 100%; width: 100%; }
         
-        /* --- SLIDER CAPTIONS (NEW) --- */
-        .slide-caption {
-            position: absolute; bottom: 0; left: 0; width: 100%;
-            padding: 15px 10px; text-align: center; color: white;
-            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
-            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
-        }
+        .slide-caption { position: absolute; bottom: 0; left: 0; width: 100%; padding: 15px 10px; text-align: center; color: white; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); text-shadow: 0 2px 4px rgba(0,0,0,0.8); }
         .bday-text { font-family: 'Dancing Script', cursive; font-size: 1.8rem; color: #FFD700; animation: bounceText 2s infinite; }
         .notice-text { font-family: 'Poppins', sans-serif; font-size: 1.1rem; font-weight: 700; background: rgba(220, 53, 69, 0.9); padding: 5px 15px; border-radius: 20px; display: inline-block; }
         @keyframes bounceText { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
 
         .date-slide { height: 100%; width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; background: linear-gradient(135deg, var(--primary), #d84315); color: white; text-align: center; padding: 10px; box-sizing: border-box; }
-        
-        /* Normal Date */
         .date-slide h1 { font-family: 'Cinzel', serif; font-size: 4rem; margin: 0; line-height: 1; text-shadow: 0 3px 6px rgba(0,0,0,0.2); }
         .date-slide p { font-size: 1.1rem; margin: 5px 0 10px 0; text-transform: uppercase; letter-spacing: 2px; }
         .live-clock { font-family: 'monospace'; background: rgba(0,0,0,0.25); padding: 5px 15px; border-radius: 20px; font-weight: 600; border: 1px solid rgba(255,255,255,0.3); font-size: 1.1rem; }
 
-        /* Event Active State */
         .date-slide.has-event { justify-content: center; gap: 5px; padding: 15px 10px; }
         .date-slide.has-event h1 { font-size: var(--event-date-size); margin-bottom: 2px; }
         .date-slide.has-event .month-year { font-size: 0.85rem; margin: 0; opacity: 0.9; }
         .date-slide.has-event .live-clock { font-size: 0.85rem; padding: 2px 10px; margin: 5px 0; }
         
-        .ekadasi-alert { 
-            font-size: clamp(1rem, 5vw, var(--event-text-size)); 
-            font-weight: 700; line-height: 1.2; margin: 5px 0; padding: 8px 12px;
-            background: rgba(0,0,0,0.15); border-radius: 12px; width: 90%; word-wrap: break-word; 
-        }
+        .ekadasi-alert { font-size: clamp(1rem, 5vw, var(--event-text-size)); font-weight: 700; line-height: 1.2; margin: 5px 0; padding: 8px 12px; background: rgba(0,0,0,0.15); border-radius: 12px; width: 90%; word-wrap: break-word; }
         .ekadasi-btn { background: white; color: var(--primary); padding: 5px 20px; border-radius: 20px; font-weight: 700; font-size: 0.85rem; text-decoration: none; box-shadow: 0 4px 10px rgba(0,0,0,0.2); animation: pulseBtn 1.5s infinite; display: inline-block; margin-top: 5px; }
         @keyframes pulseBtn { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
 
@@ -106,13 +66,11 @@
         .feature-card i { font-size: var(--icon-size); color: var(--primary); margin-bottom: 8px; }
         .feature-card span { font-size: var(--card-text-size); font-weight: 600; }
         
-        /* Kids Animation */
         .kids-anim { animation: bounce 2s infinite; }
         @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-5px);} 60% {transform: translateY(-3px);} }
 
         .live-dot { position: absolute; top: 10px; right: 30%; width: 10px; height: 10px; background-color: red; border-radius: 50%; border: 1px solid white; animation: livePulse 1.5s infinite; }
         .new-badge { position: absolute; top: 10px; right: 10px; background-color: #25D366; color: white; padding: 2px 8px; border-radius: 10px; font-size: 0.6rem; font-weight: bold; animation: livePulse 2s infinite; }
-        
         @keyframes livePulse { 0% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.2); } 100% { opacity: 1; transform: scale(1); } }
 
         .section-header { display: flex; justify-content: space-between; align-items: center; margin: 30px 0 15px 0; padding: 0 5px; }
@@ -155,20 +113,22 @@
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" style="filter: invert(0.5);"></button>
     </div>
     <div class="offcanvas-body">
+        
+        <!-- SAFE LANGUAGE SELECTOR (Unicode Escaped) -->
         <select class="lang-select" id="langSelector" onchange="setLanguage(this.value)">
-            <option value="en">ðŸ‡¬ðŸ‡§ English</option>
-            <option value="hi">ðŸ‡®ðŸ‡³ à¤¹à¤¿à¤¨à¥ à¤¦à¥€ (Hindi)</option>
-            <option value="mr">ðŸš© à¤®à¤°à¤¾à¤ à¥€ (Marathi)</option>
+            <option value="en">&#127468;&#127463; English</option>
+            <option value="hi">&#127470;&#127475; &#2361;&#2367;&#2344;&#2381;&#2340;&#2368; (Hindi)</option>
+            <option value="mr">&#128681; &#2350;&#2352;&#2366;&#2336;&#2368; (Marathi)</option>
         </select>
+        
         <a href="index.html" class="menu-item"><i class="fas fa-home"></i> <span data-key="home">Home</span></a>
         
-        <!-- NEW MENU ITEMS (Links changed to .html) -->
+        <!-- Links for Github -->
         <a href="donation.html" class="menu-item"><i class="fab fa-whatsapp"></i> <span data-key="status">Donation</span></a>
         <a href="chanting.html" class="menu-item"><i class="fas fa-om"></i> <span data-key="japa">Digital Japa</span></a>
         <a href="kids.html" class="menu-item"><i class="fas fa-child-reaching"></i> <span data-key="kids">Kids Corner</span></a>
         <a href="pune_temples.html" class="menu-item"><i class="fas fa-gopuram"></i> <span data-key="pune_temples">Pune Temples</span></a>
         <a href="tour.html" class="menu-item"><i class="fas fa-route"></i> <span data-key="tour">Temple Tour</span></a>
-        <!-- END NEW MENU ITEMS -->
         
         <a href="schedule.html" class="menu-item"><i class="far fa-calendar-alt"></i> <span data-key="schedule">Schedule</span></a>
         <a href="darshan.html" class="menu-item"><i class="fas fa-video"></i> <span data-key="darshan">Live Darshan</span></a>
@@ -181,7 +141,6 @@
         <a href="privacy.html" class="menu-item"><i class="fas fa-user-shield"></i> <span data-key="privacy">Privacy Policy</span></a>
         <a href="terms.html" class="menu-item"><i class="fas fa-file-contract"></i> <span data-key="terms">Terms & Conditions</span></a>
         <hr>
-        <!-- NOTE: Notification & Share buttons trigger native apps in Sketchware/WebView -->
         <a href="http://action_notifications" class="menu-item"><i class="fas fa-bell"></i> <span data-key="notif">Notifications</span></a>
         <a href="http://action_share" class="menu-item"><i class="fas fa-share-alt"></i> <span data-key="share">Share App</span></a>
         <hr>
@@ -201,15 +160,13 @@
                 <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgVRMyIdabzVBc7ZvvLK1C5iLFpP-nGfaR-qHEHLp7Lz4-h0vZ3mqkJZL1WM4XmUbJtLwCq4IJs7Zo9MRFc1m4uKU0aiehntaJ5FjhgD_Pg9_LPFctpr82wPIksmIypYCaEajiop7VDZiV5nvz-cbwJJRGm9qgGQSyODA-JJxkDMwOalcURlpWivbR1nyI7/s440/1000096758.png" class="brand-text-img">
             </a>
         </div>
-        <!-- NOTE: Native action link -->
         <a href="http://action_notifications" class="notif-btn"><i class="far fa-bell"></i></a>
     </div>
 </nav>
 
-<!-- Slider (DYNAMIC from Blogger API) -->
+<!-- Slider -->
 <div id="heroCarousel" class="carousel slide hero-slider" data-bs-ride="carousel" data-aos="fade-down">
     <div class="carousel-inner" id="slider-inner">
-        <!-- Loader until images are fetched -->
         <div class="carousel-item active" style="background:#FFF8E1;">
             <div class="d-flex justify-content-center align-items-center h-100">
                 <div class="spinner-border text-warning" role="status"></div>
@@ -219,8 +176,7 @@
 </div>
 
 <div class="container my-3">
-    
-    <!-- === SPECIAL ACTIONS (Status & Chanting) === -->
+    <!-- Quick Actions -->
     <div class="row g-2 mb-2">
         <div class="col-6">
             <a href="donation.html" class="feature-card" style="border: 1px solid #25D366;">
@@ -237,17 +193,15 @@
         </div>
     </div>
 
-    <!-- === NEW: KIDS CORNER & PUNE TEMPLES === -->
+    <!-- Kids & Pune Temples -->
     <div class="row g-2 mb-3">
         <div class="col-6">
-            <!-- Kids Corner -->
             <a href="kids.html" class="feature-card" style="border: 1px solid #ff69b4; background: linear-gradient(to bottom right, #fff0f6, #fff);">
                 <i class="fas fa-child-reaching kids-anim" style="color:#ff69b4;"></i>
                 <span data-key="kids">Kids Corner</span>
             </a>
         </div>
         <div class="col-6">
-            <!-- Pune Temples List -->
             <a href="pune_temples.html" class="feature-card" style="border: 1px solid #9C27B0;">
                 <i class="fas fa-gopuram" style="color:#9C27B0;"></i>
                 <span data-key="pune_temples_home">All Pune Temples</span>
@@ -255,7 +209,6 @@
         </div>
     </div>
 
-    <!-- Quick Actions -->
     <div class="row g-2 mb-3">
         <div class="col-4">
             <a href="schedule.html" class="feature-card">
@@ -278,35 +231,30 @@
         </div>
     </div>
 
-    <!-- Gallery -->
     <div class="section-header" data-aos="fade-right">
         <h5 class="section-title" data-key="gallery_h">Photo Gallery</h5>
         <a href="gallery.html" class="see-all" data-key="see_all">See All <i class="fas fa-chevron-right"></i></a>
     </div>
     <div class="h-scroll" id="gallery-scroll"></div>
 
-    <!-- Videos -->
     <div class="section-header" data-aos="fade-right">
         <h5 class="section-title" data-key="videos_h">Temple Videos</h5>
         <a href="videos.html" class="see-all" data-key="see_all">See All <i class="fas fa-chevron-right"></i></a>
     </div>
     <div class="h-scroll" id="video-scroll"></div>
 
-    <!-- Audio -->
     <div class="section-header" data-aos="fade-right">
         <h5 class="section-title" data-key="kirtan_h">Latest Kirtans</h5>
         <a href="kirtan.html" class="see-all" data-key="see_all">See All <i class="fas fa-chevron-right"></i></a>
     </div>
     <div class="h-scroll" id="audio-scroll"></div>
 
-    <!-- Lectures -->
     <div class="section-header" data-aos="fade-right">
         <h5 class="section-title" data-key="lecture_h">Divine Lectures</h5>
         <a href="lectures.html" class="see-all" data-key="see_all">See All <i class="fas fa-chevron-right"></i></a>
     </div>
     <div class="h-scroll" id="lecture-scroll"></div>
 
-    <!-- Address Box -->
     <div class="address-box" id="address-section" data-aos="fade-up">
         <h5 style="font-family:'Cinzel',serif; color:var(--primary); font-weight:700; margin-bottom:10px;" data-key="visit_h">Visit Our Temple</h5>
         <p class="address-text">GW2M+X5J, Pune - Solapur Rd, near Kanyadan Mangal Karyalaya, Aru Nagar, Bhosale Nagar, Hadapsar, Pune, Maharashtra 411028</p>
@@ -317,7 +265,6 @@
     </div>
 </div>
 
-<!-- Footer -->
 <footer class="premium-footer">
     <svg class="footer-wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill-opacity="1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
     <div class="footer-content">
@@ -354,9 +301,8 @@
 
     let fetchedSliderImages = [];
 
-    // --- 1. FETCH FROM BLOGGER API V3 (Logic Enhanced for Birthdays/Notice) ---
+    // --- 1. FETCH FROM BLOGGER API V3 (Logic Enhanced) ---
     async function fetchSliderImages() {
-        // Fetch posts with label "Slider"
         const apiUrl = `https://www.googleapis.com/blogger/v3/blogs/${BLOG_ID}/posts?key=${API_KEY}&labels=Slider&fetchImages=true&maxResults=10`;
         
         try {
@@ -382,7 +328,7 @@
                         imgUrl = entry.images[0].url;
                     }
 
-                    // 2. Determine Type (Normal, Birthday, Notice)
+                    // 2. Determine Type
                     let type = 'normal';
                     if (labels.includes('Birthday')) type = 'birthday';
                     else if (labels.includes('Notice')) type = 'notice';
@@ -392,18 +338,15 @@
             }
         } catch (error) {
             console.error("Error fetching slider:", error);
-            // Fallback Images
+            // Fallback
             fetchedSliderImages = [
                 { url: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhGPbjaPsnf4VFK5CaEuf_8NgBliNVXcGQwupjDIiAlJ8nkClebBWidi2CmiKkMETsmBS7GJMynsyrvWUJQA-7hc34UusfYHO7w9jTWe02-VmiFxDdGDNbmnGqpGgsXUCbZflOldHpgt-SH_EFn9fluIIXLogALk3f_J9g_tG4Aei7QzHHoCxiTY4TRbUg/s960/unnamed.webp", interval: 1000, type: 'normal' }
             ];
         }
-
-        // Re-render slider after fetching
-        const savedLang = localStorage.getItem('lang') || 'en';
-        setLanguage(savedLang); 
+        setLanguage(localStorage.getItem('lang') || 'en'); 
     }
 
-    // 2. STATIC DATA (LINKS MODIFIED FOR GITHUB PAGES - now point to HTML files)
+    // 2. STATIC DATA
     const gallery = [
         { img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjEl4fFheeQljSLtRMh5Gnq3c3j6xqwSfX3YeN4pI02ebfKmtwsFXLauHOMBNdClFdgXpkaV2j5gJFwxDBMDcUVi-fonSaA8qFPnpaMPlO6u305qP0rcPqGa4iufh-W5bIXbMLIHYjApRlZhF2uw8CFb65UikYDB42pU9Iu2xW1hRSiA2gGzqvaxP9V1APd/s700/1000096371.webp", t: "Entrance", link: "gallery.html" },
         { img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj2iMJBEfqMuK3Oa3mKqhQkVHVL8lTJ0p1YoyX77hCJwiVLpxzuMoQGxiM8qU2lU5DXGGvafYIaTKEMmKak18XBD9pr6R8fJZugNTdmoiY4lgiSQjBCe-CgXI2lDe1bvMYs6_koVGSXqlMxTuhNitYEBXwoS_amo726zM2GXMUY0uY2JTnmi3oFtqIdLwJy/s700/1000096372.webp", t: "Gaura Nitai", link: "gallery.html" },
@@ -415,7 +358,6 @@
     const audio = [{ img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj2zqiTZ78j6B7tqYFh5Cd-agJGzRJLOLARjfgZWNDzH9YjzEJ53lN8uveWFnvniWz58inZsgDc0aZdk5Feaddu14G9hoHnEOmUPb1_3ZdkT8ShL2PWpUe_sgf-EiNU4nWqD7X9ayVkkxa_Rpw5HpmP2qXLrAb74siFSirEj_a5C8Qk1oZGTq1yrgJqQ60/s1280/maxresdefault%20(2).jpg", t: "Jai Radha Madhava", link: "aud_3.html" }, { img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhaZSUu1t1ioA8FH5Dswww0K6l9rL__civt4QPUdSGcK9dL1CFDHY_QD_a0S6PPX66e6DG1fUx5DUL-m4sk1UmsjiZAbHCSc-PLLtaOhgMRQ_MjmsK6f6kmIzJNvHdV2XFH28Yrh8nupNqjdt0D-CdokemNsbpOpxwU2phSenRJ6a4mn282MQT2oblr2_s/s1280/maxresdefault.jpg", t: "Mangal Arti", link: "aud_1.html" }, { img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEirgrNGMiVt9YDhP0uMOM-0ZQPEU3scVnj63XU8Y8AOd6tVNWzdN4SoR5Gpc3MO13B0esgg0w4IiM2foESz2O9zRm7XWfd7SDW7Lnz32S3F_noDfiplH57pVO6Ceqq8ckaPeyW8h9NkBiI0gkQREatMEHQ-gw7_C_upDGjoqmMgqS1mBuCwcCIPsx2qoxY/s300/ab67616d00001e02883b470cb0cf592269216bd6.jpeg", t: "kirtan by prabhupada", link: "aud_5.html" }];
     const lectures = [{ img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjsCA3aWNRKFRUpfF8hFtZtRur4NKYsKqwCLnvpepm4XUMFUd82iVtJu4uOCZPylhvfC2Bx5tDgo2ZBFazttN8GfHRKfUfzwIcuMBbE1R91-s1IAbKiepcDOtRL9M_dUp5NVRMY0EGq5ML8vuXD90hNMKUbkG3Ke6Tv1T-IV3flgvUZUjMLjYoa4cP-kfgi/s480/1000096095.jpg", t: "parbu", link: "lectures.html" }, { img: "link", t: "Mind Control", link: "lectures.html" }, { img: "https://i.ytimg.com/vi/wdaec2-YA_k/maxresdefault.jpg", t: "Happiness", link: "lectures.html" }];
 
-    // === EKADASHI DATA (Updated links to .html files) ===
     const ekadasiData = [
         /* 2025 Remainder */
         { "date": "2025-12-01", "name_key": "e_mokshada", "link": "e_mokshada.html" },
@@ -445,35 +387,9 @@
         { "date": "2026-11-05", "name_key": "e_utpanna", "link": "e_utpanna.html" },
         { "date": "2026-11-19", "name_key": "e_mokshada", "link": "e_mokshada.html" },
         { "date": "2026-12-04", "name_key": "e_saphala", "link": "e_saphala.html" },
-        { "date": "2026-12-19", "name_key": "e_putrada", "link": "e_putrada.html" },
-        /* 2027 */
-        { "date": "2027-01-03", "name_key": "e_shattila", "link": "e_shattila.html" },
-        { "date": "2027-01-18", "name_key": "e_jaya", "link": "e_jaya.html" },
-        { "date": "2027-02-01", "name_key": "e_vijaya", "link": "e_vijaya.html" },
-        { "date": "2027-02-17", "name_key": "e_amalaki", "link": "e_amalaki.html" },
-        { "date": "2027-03-03", "name_key": "e_papmoch", "link": "e_papmoch.html" },
-        { "date": "2027-03-19", "name_key": "e_kamada", "link": "e_kamada.html" },
-        { "date": "2027-04-02", "name_key": "e_varuthi", "link": "e_varuthi.html" },
-        { "date": "2027-04-17", "name_key": "e_mohini", "link": "e_mohini.html" },
-        { "date": "2027-05-01", "name_key": "e_apara", "link": "e_apara.html" },
-        { "date": "2027-05-17", "name_key": "e_nirjala", "link": "e_nirjala.html" },
-        { "date": "2027-05-31", "name_key": "e_yogini", "link": "e_yogini.html" },
-        { "date": "2027-06-15", "name_key": "e_sayana", "link": "e_sayana.html" },
-        { "date": "2027-06-29", "name_key": "e_kamika", "link": "e_kamika.html" },
-        { "date": "2027-07-14", "name_key": "e_pavitra", "link": "e_pavitra.html" },
-        { "date": "2027-07-29", "name_key": "e_annada", "link": "e_annada.html" },
-        { "date": "2027-08-12", "name_key": "e_parivar", "link": "e_parivar.html" },
-        { "date": "2027-08-27", "name_key": "e_indira", "link": "e_indira.html" },
-        { "date": "2027-09-10", "name_key": "e_papanku", "link": "e_papanku.html" },
-        { "date": "2027-09-26", "name_key": "e_rama", "link": "e_rama.html" },
-        { "date": "2027-10-10", "name_key": "e_prabod", "link": "e_prabod.html" },
-        { "date": "2027-10-25", "name_key": "e_utpanna", "link": "e_utpanna.html" },
-        { "date": "2027-11-08", "name_key": "e_mokshada", "link": "e_mokshada.html" },
-        { "date": "2027-11-23", "name_key": "e_saphala", "link": "e_saphala.html" },
-        { "date": "2027-12-08", "name_key": "e_putrada", "link": "e_putrada.html" }
+        { "date": "2026-12-19", "name_key": "e_putrada", "link": "e_putrada.html" }
     ];
 
-    // === LOGIC ===
     function loadData(data, id) {
         const el = document.getElementById(id);
         if(!el) return;
@@ -491,10 +407,8 @@
     loadData(lectures, 'lecture-scroll');
 
     const slider = document.getElementById('slider-inner');
-    
-    // --- DATE LOGIC (INDIA TIMEZONE FIX) ---
     const options = { timeZone: 'Asia/Kolkata', year: 'numeric', month: '2-digit', day: '2-digit' };
-    const formatter = new Intl.DateTimeFormat('en-CA', options); // Returns YYYY-MM-DD format
+    const formatter = new Intl.DateTimeFormat('en-CA', options);
     
     const now = new Date();
     const todayStr = formatter.format(now);
@@ -507,7 +421,7 @@
     const ekadasiTom = ekadasiData.find(e => e.date === tomStr);
     
     function renderSlider(texts) {
-        if(fetchedSliderImages.length === 0) return; // Wait for fetch
+        if(fetchedSliderImages.length === 0) return;
 
         const localeMap = { 'en': 'en-US', 'hi': 'hi-IN', 'mr': 'mr-IN' };
         const lang = localStorage.getItem('lang') || 'en';
@@ -528,7 +442,6 @@
             hasEventClass = 'has-event'; 
         }
 
-        // Slide 1: Date/Event
         let html = `
             <div class="carousel-item active" data-bs-interval="2000">
                 <div class="date-slide ${hasEventClass}">
@@ -539,10 +452,8 @@
                 </div>
             </div>`;
             
-        // Slide 2+: Images from Blogger with Logic
         fetchedSliderImages.forEach(img => {
             let captionHTML = '';
-            
             if (img.type === 'birthday') {
                 captionHTML = `<div class="slide-caption"><div class="bday-text">ðŸŽ‚ Happy Birthday ${img.title} ðŸŽ‚</div></div>`;
             } else if (img.type === 'notice') {
@@ -566,21 +477,22 @@
             e_mokshada: "Mokshada Ekadashi", e_saphala: "Saphala Ekadashi", e_putrada: "Putrada Ekadashi", e_shattila: "Shattila Ekadashi", e_jaya: "Jaya Ekadashi", e_vijaya: "Vijaya Ekadashi", e_amalaki: "Amalaki Ekadashi", e_papmoch: "Papmochani Ekadashi", e_kamada: "Kamada Ekadashi", e_varuthi: "Varuthini Ekadashi", e_mohini: "Mohini Ekadashi", e_apara: "Apara Ekadashi", e_nirjala: "Nirjala Ekadashi", e_yogini: "Yogini Ekadashi", e_sayana: "Sayana Ekadashi", e_kamika: "Kamika Ekadashi", e_pavitra: "Pavitropana Ekadashi", e_annada: "Annada Ekadashi", e_parivar: "Parivartini Ekadashi", e_indira: "Indira Ekadashi", e_papanku: "Papankusha Ekadashi", e_rama: "Rama Ekadashi", e_prabod: "Prabodhini Ekadashi", e_utpanna: "Utpanna Ekadashi"
         },
         hi: {
-            app_name: "à¤‡à¤¸à¥ à¤•à¥‰à¤¨ à¤¹à¤¡à¤ªà¤¸à¤°", menu_title: "à¤®à¥‡à¤¨à¥‚", home: "à¤¹à¥‹à¤®", schedule: "à¤¸à¤®à¤¯ à¤¸à¤¾à¤°à¤£à¥€", darshan: "à¤²à¤¾à¤‡à¤µ à¤¦à¤°à¥ à¤¶à¤¨", gallery: "à¤—à¥ˆà¤²à¤°à¥€", videos: "à¤®à¤‚à¤¦à¤¿à¤° à¤µà¥€à¤¡à¤¿à¤¯à¥‹", kirtan: "à¤•à¥€à¤°à¥ à¤¤à¤¨", lectures: "à¤ªà¥ à¤°à¤µà¤šà¤¨", contact: "à¤¸à¤‚à¤ªà¤°à¥ à¤•", about: "à¤¹à¤®à¤¾à¤°à¥‡ à¤¬à¤¾à¤°à¥‡ à¤®à¥‡à¤‚", notif: "à¤¸à¥‚à¤šà¤¨à¤¾à¤ à¤‚", share: "à¤¶à¥‡à¤¯à¤° à¤•à¤°à¥‡à¤‚", dark: "à¤¡à¤¾à¤°à¥ à¤• à¤®à¥‹à¤¡", visit: "à¤ªà¤§à¤¾à¤°à¥‡à¤‚", gallery_h: "à¤«à¥‹à¤Ÿà¥‹ à¤—à¥ˆà¤²à¤°à¥€", videos_h: "à¤®à¤‚à¤¦à¤¿à¤° à¤µà¥€à¤¡à¤¿à¤¯à¥‹", kirtan_h: "à¤¨à¤µà¥€à¤¨à¤¤à¤® à¤•à¥€à¤°à¥ à¤¤à¤¨", lecture_h: "à¤¦à¤¿à¤µà¥ à¤¯ à¤ªà¥ à¤°à¤µà¤šà¤¨", see_all: "à¤¸à¤­à¥€ à¤¦à¥‡à¤–à¥‡à¤‚", visit_h: "à¤¹à¤®à¤¾à¤°à¥‡ à¤®à¤‚à¤¦à¤¿à¤° à¤ªà¤§à¤¾à¤°à¥‡à¤‚", copy: "à¤•à¥‰à¤ªà¥€", map: "à¤®à¥ˆà¤ª", privacy: "à¤—à¥‹à¤ªà¤¨à¥€à¤¯à¤¤à¤¾ à¤¨à¥€à¤¤à¤¿", terms: "à¤¨à¤¿à¤¯à¤®", mantra: "à¤¹à¤°à¥‡ à¤•à¥ƒà¤·à¥ à¤£ à¤¹à¤°à¥‡ à¤•à¥ƒà¤·à¥ à¤£ à¤•à¥ƒà¤·à¥ à¤£ à¤•à¥ƒà¤·à¥ à¤£ à¤¹à¤°à¥‡ à¤¹à¤°à¥‡\nà¤¹à¤°à¥‡ à¤°à¤¾à¤® à¤¹à¤°à¥‡ à¤°à¤¾à¤® à¤°à¤¾à¤® à¤°à¤¾à¤® à¤¹à¤°à¥‡ à¤¹à¤°à¥‡", credit: "à¤¡à¤¿à¤œà¤¼à¤¾à¤‡à¤¨ à¤”à¤° à¤µà¤¿à¤•à¤¸à¤¿à¤¤: ",
-            today_is: "à¤†à¤œ à¤¹à¥ˆ", tom_is: "à¤•à¤² à¤¹à¥ˆ", read_more: "à¤®à¤¹à¤¾à¤¤à¥ à¤®à¥ à¤¯ à¤ªà¤¢à¤¼à¥‡à¤‚", status: "à¤¦à¤¾à¤¨", japa: "à¤¡à¤¿à¤œà¤¿à¤Ÿà¤² à¤®à¤¾à¤²à¤¾",
-            kids: "à¤¬à¤¾à¤² à¤—à¥‹à¤ªà¤¾à¤²", pune_temples: "à¤ªà¥ à¤£à¥‡ à¤•à¥‡ à¤®à¤‚à¤¦à¤¿à¤°", pune_temples_home: "à¤ªà¥ à¤£à¥‡ à¤•à¥‡ à¤¸à¤­à¥€ à¤®à¤‚à¤¦à¤¿à¤°", tour: "à¤®à¤‚à¤¦à¤¿à¤° à¤¦à¤°à¥ à¤¶à¤¨ (Tour)",
-            e_mokshada: "à¤®à¥‹à¤•à¥ à¤·à¤¦à¤¾ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_saphala: "à¤¸à¤«à¤²à¤¾ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_putrada: "à¤ªà¥ à¤¤à¥ à¤°à¤¦à¤¾ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_shattila: "à¤·à¤Ÿà¤¤à¤¿à¤²à¤¾ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_jaya: "à¤œà¤¯à¤¾ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_vijaya: "à¤µà¤¿à¤œà¤¯à¤¾ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_amalaki: "à¤†à¤®à¤²à¤•à¥€ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_papmoch: "à¤ªà¤¾à¤ªà¤®à¥‹à¤šà¤¨à¥€ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_kamada: "à¤•à¤¾à¤®à¤¦à¤¾ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_varuthi: "à¤µà¤°à¥ à¤¥à¤¿à¤¨à¥€ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_mohini: "à¤®à¥‹à¤¹à¤¿à¤¨à¥€ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_apara: "à¤…à¤ªà¤°à¤¾ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_nirjala: "à¤¨à¤¿à¤°à¥ à¤œà¤²à¤¾ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_yogini: "à¤¯à¥‹à¤—à¤¿à¤¨à¥€ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_sayana: "à¤¶à¤¯à¤¨ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_kamika: "à¤•à¤¾à¤®à¤¿à¤•à¤¾ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_pavitra: "à¤ªà¤µà¤¿à¤¤à¥ à¤°à¥‹à¤ªà¤¨à¤¾ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_annada: "à¤…à¤¨à¥ à¤¨à¤¦à¤¾ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_parivar: "à¤ªà¤°à¤¿à¤µà¤°à¥ à¤¤à¤¿à¤¨à¥€ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_indira: "à¤‡à¤‚à¤¦à¤¿à¤°à¤¾ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_papanku: "à¤ªà¤¾à¤ªà¤¾à¤‚à¤•à¥ à¤¶à¤¾ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_rama: "à¤°à¤®à¤¾ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_prabod: "à¤ªà¥ à¤°à¤¬à¥‹à¤§à¤¿à¤¨à¥€ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_utpanna: "à¤‰à¤¤à¥ à¤ªà¤¨à¥ à¤¨à¤¾ à¤ à¤•à¤¾à¤¦à¤¶à¥€"
+            app_name: "इस्कॉन हडपसर", menu_title: "मेनू", home: "होम", schedule: "समय सारणी", darshan: "लाइव दर्शन", gallery: "गैलरी", videos: "मंदिर वीडियो", kirtan: "कीर्तन", lectures: "प्रवचन", contact: "संपर्क", about: "हमारे बारे में", notif: "सूचनाएं", share: "शेयर करें", dark: "डार्क मोड", visit: "पधारे", gallery_h: "फोटो गैलरी", videos_h: "मंदिर वीडियो", kirtan_h: "नवीनतम कीर्तन", lecture_h: "दिव्य प्रवचन", see_all: "सभी देखें", visit_h: "हमारे मंदिर पधारें", copy: "कॉपी", map: "मैप", privacy: "गोपनीयता नीति", terms: "नियम", mantra: "हरे कृष्ण हरे कृष्ण कृष्ण कृष्ण हरे हरे\nहरे राम हरे राम राम राम हरे हरे", credit: "डिज़ाइन और विकसित: ",
+            today_is: "आज है", tom_is: "कल है", read_more: "महात्म्य पढ़ें", status: "दान", japa: "डिजिटल माला",
+            kids: "बाल गोपाल", pune_temples: "पुणे के मंदिर", pune_temples_home: "पुणे के सभी मंदिर", tour: "मंदिर दर्शन (Tour)",
+            e_mokshada: "मोक्षदा एकादशी", e_saphala: "सफला एकादशी", e_putrada: "पुत्रदा एकादशी", e_shattila: "षटतिला एकादशी", e_jaya: "जया एकादशी", e_vijaya: "विजया एकादशी", e_amalaki: "आमल्की एकादशी", e_papmoch: "पापमोचनी एकादशी", e_kamada: "कामदा एकादशी", e_varuthi: "वरुथिनी एकादशी", e_mohini: "मोहिनी एकादशी", e_apara: "अपरा एकादशी", e_nirjala: "निर्जला एकादशी", e_yogini: "योगिनी एकादशी", e_sayana: "शयन एकादशी", e_kamika: "कामिका एकादशी", e_pavitra: "पवित्रोपना एकादशी", e_annada: "अन्नदा एकादशी", e_parivar: "परिवर्तिनी एकादशी", e_indira: "इंदिरा एकादशी", e_papanku: "पापांकुशा एकादशी", e_rama: "रमा एकादशी", e_prabod: "प्रबोधिनी एकादशी", e_utpanna: "उत्पन्ना एकादशी"
         },
         mr: {
-            app_name: "à¤‡à¤¸à¥ à¤•à¥‰à¤¨ à¤¹à¤¡à¤ªà¤¸à¤°", menu_title: "à¤®à¥‡à¤¨à¥‚", home: "à¤®à¥ à¤–à¥ à¤¯à¤ªà¥ƒà¤·à¥ à¤ ", schedule: "à¤µà¥‡à¤³à¤¾à¤ªà¤¤à¥ à¤°à¤•", darshan: "à¤¥à¥‡à¤Ÿ à¤¦à¤°à¥ à¤¶à¤¨", gallery: "à¤—à¥…à¤²à¤°à¥€", videos: "à¤®à¤‚à¤¦à¤¿à¤° à¤µà¥ à¤¹à¤¿à¤¡à¤¿à¤“", kirtan: "à¤•à¥€à¤°à¥ à¤¤à¤¨", lectures: "à¤ªà¥ à¤°à¤µà¤šà¤¨", contact: "à¤¸à¤‚à¤ªà¤°à¥ à¤•", about: "à¤†à¤®à¤šà¥ à¤¯à¤¾à¤¬à¤¦à¥ à¤¦à¤²", notif: "à¤¸à¥‚à¤šà¤¨à¤¾", share: "à¤¶à¥‡à¤…à¤° à¤•à¤°à¤¾", dark: "à¤¡à¤¾à¤°à¥ à¤• à¤®à¥‹à¤¡", visit: "à¤­à¥‡à¤Ÿ à¤¦à¥ à¤¯à¤¾", gallery_h: "à¤«à¥‹à¤Ÿà¥‹ à¤—à¥…à¤²à¤°à¥€", videos_h: "à¤®à¤‚à¤¦à¤¿à¤° à¤µà¥ à¤¹à¤¿à¤¡à¤¿à¤“", kirtan_h: "à¤¨à¤µà¥€à¤¨à¤¤à¤® à¤•à¥€à¤°à¥ à¤¤à¤¨", lecture_h: "à¤¦à¤¿à¤µà¥ à¤¯ à¤ªà¥ à¤°à¤µà¤šà¤¨", see_all: "à¤¸à¤°à¥ à¤µ à¤ªà¤¹à¤¾", visit_h: "à¤†à¤®à¤šà¥ à¤¯à¤¾ à¤®à¤‚à¤¦à¤¿à¤°à¤¾à¤¤ à¤¯à¤¾", copy: "à¤•à¥‰à¤ªà¥€", map: "à¤¨à¤•à¤¾à¤¶à¤¾", privacy: "à¤—à¥‹à¤ªà¤¨à¥€à¤¯à¤¤à¤¾ à¤§à¥‹à¤°à¤£", terms: "à¤…à¤Ÿà¥€", mantra: "à¤¹à¤°à¥‡ à¤•à¥ƒà¤·à¥ à¤£ à¤¹à¤°à¥‡ à¤•à¥ƒà¤·à¥ à¤£ à¤•à¥ƒà¤·à¥ à¤£ à¤•à¥ƒà¤·à¥ à¤£ à¤¹à¤°à¥‡ à¤¹à¤°à¥‡\nà¤¹à¤°à¥‡ à¤°à¤¾à¤® à¤¹à¤°à¥‡ à¤°à¤¾à¤® à¤°à¤¾à¤® à¤°à¤¾à¤® à¤¹à¤°à¥‡ à¤¹à¤°à¥‡", credit: "à¤¡à¤¿à¤ à¤¾à¤‡à¤¨ à¤†à¤£à¤¿ à¤µà¤¿à¤•à¤¸à¤¿à¤¤: ",
-            today_is: "à¤†à¤œ à¤†à¤¹à¥‡", tom_is: "à¤‰à¤¦à¥ à¤¯à¤¾ à¤†à¤¹à¥‡", read_more: "à¤…à¤§à¤¿à¤• à¤µà¤¾à¤šà¤¾", status: "à¤¦à¤¾à¤¨", japa: "à¤¡à¤¿à¤œà¤¿à¤Ÿà¤² à¤®à¤¾à¤³",
-            kids: "à¤¬à¤¾à¤² à¤¸à¤‚à¤¸à¥ à¤•à¤¾à¤°", pune_temples: "à¤ªà¥ à¤£à¥ à¤¯à¤¾à¤¤à¥€à¤² à¤®à¤‚à¤¦à¤¿à¤°à¥‡", pune_temples_home: "à¤ªà¥ à¤£à¥ à¤¯à¤¾à¤¤à¥€à¤² à¤¸à¤°à¥ à¤µ à¤®à¤‚à¤¦à¤¿à¤°à¥‡", tour: "à¤®à¤‚à¤¦à¤¿à¤° à¤¸à¤«à¤° (Tour)",
-            e_mokshada: "à¤®à¥‹à¤•à¥ à¤·à¤¦à¤¾ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_saphala: "à¤¸à¤«à¤²à¤¾ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_putrada: "à¤ªà¥ à¤¤à¥ à¤°à¤¦à¤¾ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_shattila: "à¤·à¤Ÿà¤¤à¤¿à¤²à¤¾ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_jaya: "à¤œà¤¯à¤¾ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_vijaya: "à¤µà¤¿à¤œà¤¯à¤¾ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_amalaki: "à¤†à¤®à¤²à¤•à¥€ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_papmoch: "à¤ªà¤¾à¤ªà¤®à¥‹à¤šà¤¨à¥€ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_kamada: "à¤•à¤¾à¤®à¤¦à¤¾ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_varuthi: "à¤µà¤°à¥ à¤¥à¤¿à¤¨à¥€ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_mohini: "à¤®à¥‹à¤¹à¤¿à¤¨à¥€ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_apara: "à¤…à¤ªà¤°à¤¾ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_nirjala: "à¤¨à¤¿à¤°à¥ à¤œà¤²à¤¾ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_yogini: "à¤¯à¥‹à¤—à¤¿à¤¨à¥€ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_sayana: "à¤¶à¤¯à¤¨ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_kamika: "à¤•à¤¾à¤®à¤¿à¤•à¤¾ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_pavitra: "à¤ªà¤µà¤¿à¤¤à¥ à¤°à¥‹à¤ªà¤¨à¤¾ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_annada: "à¤…à¤¨à¥ à¤¨à¤¦à¤¾ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_parivar: "à¤ªà¤°à¤¿à¤µà¤°à¥ à¤¤à¤¿à¤¨à¥€ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_indira: "à¤‡à¤‚à¤¦à¤¿à¤°à¤¾ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_papanku: "à¤ªà¤¾à¤ªà¤¾à¤‚à¤•à¥ à¤¶à¤¾ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_rama: "à¤°à¤®à¤¾ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_prabod: "à¤ªà¥ à¤°à¤¬à¥‹à¤§à¤¿à¤¨à¥€ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_utpanna: "à¤‰à¤¤à¥ à¤ªà¤¨à¥ à¤¨à¤¾ à¤ à¤•à¤¾à¤¦à¤¶à¥€"
+            app_name: "इस्कॉन हडपसर", menu_title: "मेनू", home: "मुख्यपृष्ठ", schedule: "वेळापत्रक", darshan: "थेट दर्शन", gallery: "गॅलरी", videos: "मंदिर व्हिडिओ", kirtan: "कीर्तन", lectures: "प्रवचन", contact: "संपर्क", about: "आमच्याबद्दल", notif: "सूचना", share: "शेअर करा", dark: "डार्क मोड", visit: "भेट द्या", gallery_h: "फोटो गॅलरी", videos_h: "मंदिर व्हिडिओ", kirtan_h: "नवीनतम कीर्तन", lecture_h: "दिव्य प्रवचन", see_all: "सर्व पहा", visit_h: "आमच्या मंदिरात या", copy: "कॉपी", map: "नकाशा", privacy: "गोपनीयता धोरण", terms: "अटी", mantra: "हरे कृष्ण हरे कृष्ण कृष्ण कृष्ण हरे हरे\nहरे राम हरे राम राम राम हरे हरे", credit: "डिझाइन आणि विकसित: ",
+            today_is: "आज आहे", tom_is: "उद्या आहे", read_more: "अधिक वाचा", status: "दान", japa: "डिजिटल माळ",
+            kids: "बाल संस्कार", pune_temples: "पुण्यातील मंदिरे", pune_temples_home: "पुण्यातील सर्व मंदिरे", tour: "मंदिर सफर (Tour)",
+            e_mokshada: "मोक्षदा एकादशी", e_saphala: "सफला एकादशी", e_putrada: "पुत्रदा एकादशी", e_shattila: "षटतिला एकादशी", e_jaya: "जया एकादशी", e_vijaya: "विजया एकादशी", e_amalaki: "आमल्की एकादशी", e_papmoch: "पापमोचनी एकादशी", e_kamada: "कामदा एकादशी", e_varuthi: "वरुथिनी एकादशी", e_mohini: "मोहिनी एकादशी", e_apara: "अपरा एकादशी", e_nirjala: "निर्जला एकादशी", e_yogini: "योगिनी एकादशी", e_sayana: "शयन एकादशी", e_kamika: "कामिका एकादशी", e_pavitra: "पवित्रोपना एकादशी", e_annada: "अन्नदा एकादशी", e_parivar: "परिवर्तिनी एकादशी", e_indira: "इंदिरा एकादशी", e_papanku: "पापांकुशा एकादशी", e_rama: "रमा एकादशी", e_prabod: "प्रबोधिनी एकादशी", e_utpanna: "उत्पन्ना एकादशी"
         }
     };
 
     function setLanguage(lang) {
         localStorage.setItem('lang', lang);
+        document.getElementById('langSelector').value = lang;
         const texts = langData[lang];
         document.querySelectorAll('[data-key]').forEach(el => {
             const key = el.getAttribute('data-key');
@@ -597,11 +509,9 @@
     function openMap() { window.open("https://goo.gl/maps/YOUR_LINK_HERE"); }
 
     const savedLang = localStorage.getItem('lang') || 'en';
-    document.getElementById('langSelector').value = savedLang;
     
-    // START FETCHING BEFORE SETTING LANGUAGE
     fetchSliderImages().then(() => {
-        setLanguage(savedLang); // Render after fetch
+        setLanguage(savedLang); 
     });
 
     if(localStorage.getItem('theme') === 'dark') document.body.setAttribute('data-theme', 'dark');
