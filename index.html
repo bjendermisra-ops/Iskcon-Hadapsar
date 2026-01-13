@@ -14,7 +14,7 @@
     
     <style>
         /* =========================================
-           🛠️ SETTINGS PANEL
+           ðŸ› ï¸  SETTINGS PANEL
            ========================================= */
         :root {
             --primary: #FF9933;       
@@ -156,31 +156,32 @@
     </div>
     <div class="offcanvas-body">
         <select class="lang-select" id="langSelector" onchange="setLanguage(this.value)">
-            <option value="en">🇬🇧 English</option>
-            <option value="hi">🇮🇳 हिन्दी (Hindi)</option>
-            <option value="mr">🚩 मराठी (Marathi)</option>
+            <option value="en">ðŸ‡¬ðŸ‡§ English</option>
+            <option value="hi">ðŸ‡®ðŸ‡³ à¤¹à¤¿à¤¨à¥ à¤¦à¥€ (Hindi)</option>
+            <option value="mr">ðŸš© à¤®à¤°à¤¾à¤ à¥€ (Marathi)</option>
         </select>
-        <a href="go:home" class="menu-item"><i class="fas fa-home"></i> <span data-key="home">Home</span></a>
+        <a href="index.html" class="menu-item"><i class="fas fa-home"></i> <span data-key="home">Home</span></a>
         
-        <!-- NEW MENU ITEMS -->
-        <a href="go:dono" class="menu-item"><i class="fab fa-whatsapp"></i> <span data-key="status">Donation</span></a>
-        <a href="go:chanting" class="menu-item"><i class="fas fa-om"></i> <span data-key="japa">Digital Japa</span></a>
-        <a href="go:kids" class="menu-item"><i class="fas fa-child-reaching"></i> <span data-key="kids">Kids Corner</span></a>
-        <a href="go:pune" class="menu-item"><i class="fas fa-gopuram"></i> <span data-key="pune_temples">Pune Temples</span></a>
-        <a href="go:tour" class="menu-item"><i class="fas fa-route"></i> <span data-key="tour">Temple Tour</span></a>
+        <!-- NEW MENU ITEMS (Links changed to .html) -->
+        <a href="donation.html" class="menu-item"><i class="fab fa-whatsapp"></i> <span data-key="status">Donation</span></a>
+        <a href="chanting.html" class="menu-item"><i class="fas fa-om"></i> <span data-key="japa">Digital Japa</span></a>
+        <a href="kids.html" class="menu-item"><i class="fas fa-child-reaching"></i> <span data-key="kids">Kids Corner</span></a>
+        <a href="pune_temples.html" class="menu-item"><i class="fas fa-gopuram"></i> <span data-key="pune_temples">Pune Temples</span></a>
+        <a href="tour.html" class="menu-item"><i class="fas fa-route"></i> <span data-key="tour">Temple Tour</span></a>
         <!-- END NEW MENU ITEMS -->
         
-        <a href="go:schedule" class="menu-item"><i class="far fa-calendar-alt"></i> <span data-key="schedule">Schedule</span></a>
-        <a href="go:darshan" class="menu-item"><i class="fas fa-video"></i> <span data-key="darshan">Live Darshan</span></a>
-        <a href="go:gallery" class="menu-item"><i class="fas fa-images"></i> <span data-key="gallery">Gallery</span></a>
-        <a href="go:tmp_vids" class="menu-item"><i class="fas fa-church"></i> <span data-key="videos">Temple Videos</span></a>
-        <a href="go:aud_krt" class="menu-item"><i class="fas fa-music"></i> <span data-key="kirtan">Kirtans</span></a>
-        <a href="go:lectures" class="menu-item"><i class="fas fa-microphone"></i> <span data-key="lectures">Lectures</span></a>
-        <a href="go:contact" class="menu-item"><i class="fas fa-phone-alt"></i> <span data-key="contact">Contact</span></a>
-        <a href="go:about" class="menu-item"><i class="fas fa-info-circle"></i> <span data-key="about">About Us</span></a>
-        <a href="go:privacy" class="menu-item"><i class="fas fa-user-shield"></i> <span data-key="privacy">Privacy Policy</span></a>
-        <a href="go:terms" class="menu-item"><i class="fas fa-file-contract"></i> <span data-key="terms">Terms & Conditions</span></a>
+        <a href="schedule.html" class="menu-item"><i class="far fa-calendar-alt"></i> <span data-key="schedule">Schedule</span></a>
+        <a href="darshan.html" class="menu-item"><i class="fas fa-video"></i> <span data-key="darshan">Live Darshan</span></a>
+        <a href="gallery.html" class="menu-item"><i class="fas fa-images"></i> <span data-key="gallery">Gallery</span></a>
+        <a href="videos.html" class="menu-item"><i class="fas fa-church"></i> <span data-key="videos">Temple Videos</span></a>
+        <a href="kirtan.html" class="menu-item"><i class="fas fa-music"></i> <span data-key="kirtan">Kirtans</span></a>
+        <a href="lectures.html" class="menu-item"><i class="fas fa-microphone"></i> <span data-key="lectures">Lectures</span></a>
+        <a href="contact.html" class="menu-item"><i class="fas fa-phone-alt"></i> <span data-key="contact">Contact</span></a>
+        <a href="about.html" class="menu-item"><i class="fas fa-info-circle"></i> <span data-key="about">About Us</span></a>
+        <a href="privacy.html" class="menu-item"><i class="fas fa-user-shield"></i> <span data-key="privacy">Privacy Policy</span></a>
+        <a href="terms.html" class="menu-item"><i class="fas fa-file-contract"></i> <span data-key="terms">Terms & Conditions</span></a>
         <hr>
+        <!-- NOTE: Notification & Share buttons trigger native apps in Sketchware/WebView -->
         <a href="http://action_notifications" class="menu-item"><i class="fas fa-bell"></i> <span data-key="notif">Notifications</span></a>
         <a href="http://action_share" class="menu-item"><i class="fas fa-share-alt"></i> <span data-key="share">Share App</span></a>
         <hr>
@@ -200,6 +201,7 @@
                 <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgVRMyIdabzVBc7ZvvLK1C5iLFpP-nGfaR-qHEHLp7Lz4-h0vZ3mqkJZL1WM4XmUbJtLwCq4IJs7Zo9MRFc1m4uKU0aiehntaJ5FjhgD_Pg9_LPFctpr82wPIksmIypYCaEajiop7VDZiV5nvz-cbwJJRGm9qgGQSyODA-JJxkDMwOalcURlpWivbR1nyI7/s440/1000096758.png" class="brand-text-img">
             </a>
         </div>
+        <!-- NOTE: Native action link -->
         <a href="http://action_notifications" class="notif-btn"><i class="far fa-bell"></i></a>
     </div>
 </nav>
@@ -221,14 +223,14 @@
     <!-- === SPECIAL ACTIONS (Status & Chanting) === -->
     <div class="row g-2 mb-2">
         <div class="col-6">
-            <a href="go:dono" class="feature-card" style="border: 1px solid #25D366;">
+            <a href="donation.html" class="feature-card" style="border: 1px solid #25D366;">
                 <div class="new-badge">NEW</div>
                 <i class="fab fa-whatsapp" style="color:#25D366;"></i>
                 <span data-key="status">Donation</span>
             </a>
         </div>
         <div class="col-6">
-            <a href="go:chanting" class="feature-card" style="border: 1px solid var(--primary);">
+            <a href="chanting.html" class="feature-card" style="border: 1px solid var(--primary);">
                 <i class="fas fa-om"></i>
                 <span data-key="japa">Digital Japa</span>
             </a>
@@ -239,14 +241,14 @@
     <div class="row g-2 mb-3">
         <div class="col-6">
             <!-- Kids Corner -->
-            <a href="go:kids" class="feature-card" style="border: 1px solid #ff69b4; background: linear-gradient(to bottom right, #fff0f6, #fff);">
+            <a href="kids.html" class="feature-card" style="border: 1px solid #ff69b4; background: linear-gradient(to bottom right, #fff0f6, #fff);">
                 <i class="fas fa-child-reaching kids-anim" style="color:#ff69b4;"></i>
                 <span data-key="kids">Kids Corner</span>
             </a>
         </div>
         <div class="col-6">
             <!-- Pune Temples List -->
-            <a href="go:pune_temples" class="feature-card" style="border: 1px solid #9C27B0;">
+            <a href="pune_temples.html" class="feature-card" style="border: 1px solid #9C27B0;">
                 <i class="fas fa-gopuram" style="color:#9C27B0;"></i>
                 <span data-key="pune_temples_home">All Pune Temples</span>
             </a>
@@ -256,13 +258,13 @@
     <!-- Quick Actions -->
     <div class="row g-2 mb-3">
         <div class="col-4">
-            <a href="go:schedule" class="feature-card">
+            <a href="schedule.html" class="feature-card">
                 <i class="far fa-clock"></i>
                 <span data-key="schedule">Schedule</span>
             </a>
         </div>
         <div class="col-4">
-            <a href="go:darshan" class="feature-card">
+            <a href="darshan.html" class="feature-card">
                 <div class="live-dot"></div>
                 <i class="fas fa-video"></i>
                 <span data-key="darshan">Live Darshan</span>
@@ -279,28 +281,28 @@
     <!-- Gallery -->
     <div class="section-header" data-aos="fade-right">
         <h5 class="section-title" data-key="gallery_h">Photo Gallery</h5>
-        <a href="go:gallery" class="see-all" data-key="see_all">See All <i class="fas fa-chevron-right"></i></a>
+        <a href="gallery.html" class="see-all" data-key="see_all">See All <i class="fas fa-chevron-right"></i></a>
     </div>
     <div class="h-scroll" id="gallery-scroll"></div>
 
     <!-- Videos -->
     <div class="section-header" data-aos="fade-right">
         <h5 class="section-title" data-key="videos_h">Temple Videos</h5>
-        <a href="go:tmp_vids" class="see-all" data-key="see_all">See All <i class="fas fa-chevron-right"></i></a>
+        <a href="videos.html" class="see-all" data-key="see_all">See All <i class="fas fa-chevron-right"></i></a>
     </div>
     <div class="h-scroll" id="video-scroll"></div>
 
     <!-- Audio -->
     <div class="section-header" data-aos="fade-right">
         <h5 class="section-title" data-key="kirtan_h">Latest Kirtans</h5>
-        <a href="go:aud_krt" class="see-all" data-key="see_all">See All <i class="fas fa-chevron-right"></i></a>
+        <a href="kirtan.html" class="see-all" data-key="see_all">See All <i class="fas fa-chevron-right"></i></a>
     </div>
     <div class="h-scroll" id="audio-scroll"></div>
 
     <!-- Lectures -->
     <div class="section-header" data-aos="fade-right">
         <h5 class="section-title" data-key="lecture_h">Divine Lectures</h5>
-        <a href="go:lectures" class="see-all" data-key="see_all">See All <i class="fas fa-chevron-right"></i></a>
+        <a href="lectures.html" class="see-all" data-key="see_all">See All <i class="fas fa-chevron-right"></i></a>
     </div>
     <div class="h-scroll" id="lecture-scroll"></div>
 
@@ -327,13 +329,13 @@
             <a href="#" class="f-icon"><i class="fab fa-instagram"></i></a>
         </div>
         <div class="footer-links">
-            <a href="go:privacy" data-key="privacy">Privacy Policy</a> | 
-            <a href="go:terms" data-key="terms">Terms</a> | 
-            <a href="go:about" data-key="about">About</a> |
-            <a href="go:contact" data-key="contact">Contact</a>
+            <a href="privacy.html" data-key="privacy">Privacy Policy</a> | 
+            <a href="terms.html" data-key="terms">Terms</a> | 
+            <a href="about.html" data-key="about">About</a> |
+            <a href="contact.html" data-key="contact">Contact</a>
         </div>
         <div class="footer-divider"></div>
-        <p class="copyright">© 2025 ISKCON Hadapsar. All Rights Reserved.</p>
+        <p class="copyright">Â© 2025 ISKCON Hadapsar. All Rights Reserved.</p>
         <p class="dev-credit" data-key="credit">Designed & Developed by <span class="dev-name">Santosh</span></p>
     </div>
 </footer>
@@ -344,7 +346,7 @@
     AOS.init();
 
     // ============================================
-    // ⚙️ USER CONFIG (Blogger API V3)
+    // âš™ï¸  USER CONFIG (Blogger API V3)
     // ============================================
     const BLOG_ID = '2655100361109264849';
     const API_KEY = 'AIzaSyAIEywwPuNLMs73jjxHQjSAg0C1L3niXHQ';
@@ -401,74 +403,74 @@
         setLanguage(savedLang); 
     }
 
-    // 2. STATIC DATA (Gallery, Videos, etc.)
+    // 2. STATIC DATA (LINKS MODIFIED FOR GITHUB PAGES - now point to HTML files)
     const gallery = [
-        { img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjEl4fFheeQljSLtRMh5Gnq3c3j6xqwSfX3YeN4pI02ebfKmtwsFXLauHOMBNdClFdgXpkaV2j5gJFwxDBMDcUVi-fonSaA8qFPnpaMPlO6u305qP0rcPqGa4iufh-W5bIXbMLIHYjApRlZhF2uw8CFb65UikYDB42pU9Iu2xW1hRSiA2gGzqvaxP9V1APd/s700/1000096371.webp", t: "Entrance", link: "go:gallery" },
-        { img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj2iMJBEfqMuK3Oa3mKqhQkVHVL8lTJ0p1YoyX77hCJwiVLpxzuMoQGxiM8qU2lU5DXGGvafYIaTKEMmKak18XBD9pr6R8fJZugNTdmoiY4lgiSQjBCe-CgXI2lDe1bvMYs6_koVGSXqlMxTuhNitYEBXwoS_amo726zM2GXMUY0uY2JTnmi3oFtqIdLwJy/s700/1000096372.webp", t: "Gaura Nitai", link: "go:gallery" },
-        { img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgftLPu_jM1WHAD6_G2d4oMSu8SRkHeb6ZE3OLM2HyXiyDPY2Ch0b2Zk18g0kGFJHd8zseNi7dMUZFz7WmuehpnHtGlOXGSedcwy4hWt0G8oWMwuU0fBw_OWAX0ZcnkIW0yomsKcwoV8KrrlVYAMErXxJMIpZk3v1cxnZKuRXWUL3lzwzgW3PzsBg2t_ger/s700/1000096370.webp", t: "Main Altar", link: "go:gallery" },
-        { img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjTdGA5YE6KB8Vjv_NB-dvHEDho3t5JXv5Cl0V2LRW6nZrujh_kasEl4AixZ-1RyWLDiaWWDnkTgabDUTbKsfiKGTeZwras2RH5nCzo5aaL2uxB9zUyn8zWw9QRH02nOo0XBrWezCUFp-Qe_9Q3QHgYLiDsMJrW1w_hxXc28YRUMmbx-hvXm2oW-I_WoBSw/s700/1000096373.webp", t: "Govardhan", link: "go:gallery" }
+        { img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjEl4fFheeQljSLtRMh5Gnq3c3j6xqwSfX3YeN4pI02ebfKmtwsFXLauHOMBNdClFdgXpkaV2j5gJFwxDBMDcUVi-fonSaA8qFPnpaMPlO6u305qP0rcPqGa4iufh-W5bIXbMLIHYjApRlZhF2uw8CFb65UikYDB42pU9Iu2xW1hRSiA2gGzqvaxP9V1APd/s700/1000096371.webp", t: "Entrance", link: "gallery.html" },
+        { img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj2iMJBEfqMuK3Oa3mKqhQkVHVL8lTJ0p1YoyX77hCJwiVLpxzuMoQGxiM8qU2lU5DXGGvafYIaTKEMmKak18XBD9pr6R8fJZugNTdmoiY4lgiSQjBCe-CgXI2lDe1bvMYs6_koVGSXqlMxTuhNitYEBXwoS_amo726zM2GXMUY0uY2JTnmi3oFtqIdLwJy/s700/1000096372.webp", t: "Gaura Nitai", link: "gallery.html" },
+        { img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgftLPu_jM1WHAD6_G2d4oMSu8SRkHeb6ZE3OLM2HyXiyDPY2Ch0b2Zk18g0kGFJHd8zseNi7dMUZFz7WmuehpnHtGlOXGSedcwy4hWt0G8oWMwuU0fBw_OWAX0ZcnkIW0yomsKcwoV8KrrlVYAMErXxJMIpZk3v1cxnZKuRXWUL3lzwzgW3PzsBg2t_ger/s700/1000096370.webp", t: "Main Altar", link: "gallery.html" },
+        { img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjTdGA5YE6KB8Vjv_NB-dvHEDho3t5JXv5Cl0V2LRW6nZrujh_kasEl4AixZ-1RyWLDiaWWDnkTgabDUTbKsfiKGTeZwras2RH5nCzo5aaL2uxB9zUyn8zWw9QRH02nOo0XBrWezCUFp-Qe_9Q3QHgYLiDsMJrW1w_hxXc28YRUMmbx-hvXm2oW-I_WoBSw/s700/1000096373.webp", t: "Govardhan", link: "gallery.html" }
     ];
 
-    const videos = [{ img: "https://i.ytimg.com/vi/b4XW-P_eA6Y/maxresdefault.jpg", t: "Janmashtami", link: "go:tmp_vids" }, { img: "https://i.ytimg.com/vi/JzF5B-qG4NQ/maxresdefault.jpg", t: "Gaur Purnima", link: "go:tmp_vids" }, { img: "https://i.ytimg.com/vi/wA-a25S-aBI/maxresdefault.jpg", t: "Sunday Feast", link: "go:tmp_vids" }];
-    const audio = [{ img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj2zqiTZ78j6B7tqYFh5Cd-agJGzRJLOLARjfgZWNDzH9YjzEJ53lN8uveWFnvniWz58inZsgDc0aZdk5Feaddu14G9hoHnEOmUPb1_3ZdkT8ShL2PWpUe_sgf-EiNU4nWqD7X9ayVkkxa_Rpw5HpmP2qXLrAb74siFSirEj_a5C8Qk1oZGTq1yrgJqQ60/s1280/maxresdefault%20(2).jpg", t: "Jai Radha Madhava", link: "go:aud_3" }, { img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhaZSUu1t1ioA8FH5Dswww0K6l9rL__civt4QPUdSGcK9dL1CFDHY_QD_a0S6PPX66e6DG1fUx5DUL-m4sk1UmsjiZAbHCSc-PLLtaOhgMRQ_MjmsK6f6kmIzJNvHdV2XFH28Yrh8nupNqjdt0D-CdokemNsbpOpxwU2phSenRJ6a4mn282MQT2oblr2_s/s1280/maxresdefault.jpg", t: "Mangal Arti", link: "go:aud_1" }, { img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEirgrNGMiVt9YDhP0uMOM-0ZQPEU3scVnj63XU8Y8AOd6tVNWzdN4SoR5Gpc3MO13B0esgg0w4IiM2foESz2O9zRm7XWfd7SDW7Lnz32S3F_noDfiplH57pVO6Ceqq8ckaPeyW8h9NkBiI0gkQREatMEHQ-gw7_C_upDGjoqmMgqS1mBuCwcCIPsx2qoxY/s300/ab67616d00001e02883b470cb0cf592269216bd6.jpeg", t: "kirtan by prabhupada", link: "go:aud_5" }];
-    const lectures = [{ img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjsCA3aWNRKFRUpfF8hFtZtRur4NKYsKqwCLnvpepm4XUMFUd82iVtJu4uOCZPylhvfC2Bx5tDgo2ZBFazttN8GfHRKfUfzwIcuMBbE1R91-s1IAbKiepcDOtRL9M_dUp5NVRMY0EGq5ML8vuXD90hNMKUbkG3Ke6Tv1T-IV3flgvUZUjMLjYoa4cP-kfgi/s480/1000096095.jpg", t: "parbu", link: "go: lecture" }, { img: "link", t: "Mind Control", link: "go:lecture" }, { img: "https://i.ytimg.com/vi/wdaec2-YA_k/maxresdefault.jpg", t: "Happiness", link: "go: lecture" }];
+    const videos = [{ img: "https://i.ytimg.com/vi/b4XW-P_eA6Y/maxresdefault.jpg", t: "Janmashtami", link: "videos.html" }, { img: "https://i.ytimg.com/vi/JzF5B-qG4NQ/maxresdefault.jpg", t: "Gaur Purnima", link: "videos.html" }, { img: "https://i.ytimg.com/vi/wA-a25S-aBI/maxresdefault.jpg", t: "Sunday Feast", link: "videos.html" }];
+    const audio = [{ img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj2zqiTZ78j6B7tqYFh5Cd-agJGzRJLOLARjfgZWNDzH9YjzEJ53lN8uveWFnvniWz58inZsgDc0aZdk5Feaddu14G9hoHnEOmUPb1_3ZdkT8ShL2PWpUe_sgf-EiNU4nWqD7X9ayVkkxa_Rpw5HpmP2qXLrAb74siFSirEj_a5C8Qk1oZGTq1yrgJqQ60/s1280/maxresdefault%20(2).jpg", t: "Jai Radha Madhava", link: "aud_3.html" }, { img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhaZSUu1t1ioA8FH5Dswww0K6l9rL__civt4QPUdSGcK9dL1CFDHY_QD_a0S6PPX66e6DG1fUx5DUL-m4sk1UmsjiZAbHCSc-PLLtaOhgMRQ_MjmsK6f6kmIzJNvHdV2XFH28Yrh8nupNqjdt0D-CdokemNsbpOpxwU2phSenRJ6a4mn282MQT2oblr2_s/s1280/maxresdefault.jpg", t: "Mangal Arti", link: "aud_1.html" }, { img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEirgrNGMiVt9YDhP0uMOM-0ZQPEU3scVnj63XU8Y8AOd6tVNWzdN4SoR5Gpc3MO13B0esgg0w4IiM2foESz2O9zRm7XWfd7SDW7Lnz32S3F_noDfiplH57pVO6Ceqq8ckaPeyW8h9NkBiI0gkQREatMEHQ-gw7_C_upDGjoqmMgqS1mBuCwcCIPsx2qoxY/s300/ab67616d00001e02883b470cb0cf592269216bd6.jpeg", t: "kirtan by prabhupada", link: "aud_5.html" }];
+    const lectures = [{ img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjsCA3aWNRKFRUpfF8hFtZtRur4NKYsKqwCLnvpepm4XUMFUd82iVtJu4uOCZPylhvfC2Bx5tDgo2ZBFazttN8GfHRKfUfzwIcuMBbE1R91-s1IAbKiepcDOtRL9M_dUp5NVRMY0EGq5ML8vuXD90hNMKUbkG3Ke6Tv1T-IV3flgvUZUjMLjYoa4cP-kfgi/s480/1000096095.jpg", t: "parbu", link: "lectures.html" }, { img: "link", t: "Mind Control", link: "lectures.html" }, { img: "https://i.ytimg.com/vi/wdaec2-YA_k/maxresdefault.jpg", t: "Happiness", link: "lectures.html" }];
 
-    // === EKADASHI DATA (PUNE CALENDAR 2025-2027) ===
+    // === EKADASHI DATA (Updated links to .html files) ===
     const ekadasiData = [
         /* 2025 Remainder */
-        { "date": "2025-12-01", "name_key": "e_mokshada", "link": "go:e_mokshada" },
-        { "date": "2025-12-16", "name_key": "e_saphala", "link": "go:e_saphala" },
-        { "date": "2025-12-30", "name_key": "e_putrada", "link": "go:e_putrada" },
+        { "date": "2025-12-01", "name_key": "e_mokshada", "link": "e_mokshada.html" },
+        { "date": "2025-12-16", "name_key": "e_saphala", "link": "e_saphala.html" },
+        { "date": "2025-12-30", "name_key": "e_putrada", "link": "e_putrada.html" },
         /* 2026 */
-        { "date": "2026-01-14", "name_key": "e_shattila", "link": "go:e_shattila" },
-        { "date": "2026-01-29", "name_key": "e_jaya", "link": "go:e_jaya" },
-        { "date": "2026-02-13", "name_key": "e_vijaya", "link": "go:e_vijaya" },
-        { "date": "2026-02-27", "name_key": "e_amalaki", "link": "go:e_amalaki" },
-        { "date": "2026-03-14", "name_key": "e_papmoch", "link": "go:e_papmoch" },
-        { "date": "2026-03-29", "name_key": "e_kamada", "link": "go:e_kamada" },
-        { "date": "2026-04-13", "name_key": "e_varuthi", "link": "go:e_varuthi" },
-        { "date": "2026-04-27", "name_key": "e_mohini", "link": "go:e_mohini" },
-        { "date": "2026-05-12", "name_key": "e_apara", "link": "go:e_apara" },
-        { "date": "2026-05-28", "name_key": "e_nirjala", "link": "go:e_nirjala" },
-        { "date": "2026-06-11", "name_key": "e_yogini", "link": "go:e_yogini" },
-        { "date": "2026-06-26", "name_key": "e_sayana", "link": "go:e_sayana" },
-        { "date": "2026-07-11", "name_key": "e_kamika", "link": "go:e_kamika" },
-        { "date": "2026-07-25", "name_key": "e_pavitra", "link": "go:e_pavitra" },
-        { "date": "2026-08-09", "name_key": "e_annada", "link": "go:e_annada" },
-        { "date": "2026-08-23", "name_key": "e_parivar", "link": "go:e_parivar" },
-        { "date": "2026-09-07", "name_key": "e_indira", "link": "go:e_indira" },
-        { "date": "2026-09-22", "name_key": "e_papanku", "link": "go:e_papanku" },
-        { "date": "2026-10-06", "name_key": "e_rama", "link": "go:e_rama" },
-        { "date": "2026-10-21", "name_key": "e_prabod", "link": "go:e_prabod" },
-        { "date": "2026-11-05", "name_key": "e_utpanna", "link": "go:e_utpanna" },
-        { "date": "2026-11-19", "name_key": "e_mokshada", "link": "go:e_mokshada" },
-        { "date": "2026-12-04", "name_key": "e_saphala", "link": "go:e_saphala" },
-        { "date": "2026-12-19", "name_key": "e_putrada", "link": "go:e_putrada" },
+        { "date": "2026-01-14", "name_key": "e_shattila", "link": "e_shattila.html" },
+        { "date": "2026-01-29", "name_key": "e_jaya", "link": "e_jaya.html" },
+        { "date": "2026-02-13", "name_key": "e_vijaya", "link": "e_vijaya.html" },
+        { "date": "2026-02-27", "name_key": "e_amalaki", "link": "e_amalaki.html" },
+        { "date": "2026-03-14", "name_key": "e_papmoch", "link": "e_papmoch.html" },
+        { "date": "2026-03-29", "name_key": "e_kamada", "link": "e_kamada.html" },
+        { "date": "2026-04-13", "name_key": "e_varuthi", "link": "e_varuthi.html" },
+        { "date": "2026-04-27", "name_key": "e_mohini", "link": "e_mohini.html" },
+        { "date": "2026-05-12", "name_key": "e_apara", "link": "e_apara.html" },
+        { "date": "2026-05-28", "name_key": "e_nirjala", "link": "e_nirjala.html" },
+        { "date": "2026-06-11", "name_key": "e_yogini", "link": "e_yogini.html" },
+        { "date": "2026-06-26", "name_key": "e_sayana", "link": "e_sayana.html" },
+        { "date": "2026-07-11", "name_key": "e_kamika", "link": "e_kamika.html" },
+        { "date": "2026-07-25", "name_key": "e_pavitra", "link": "e_pavitra.html" },
+        { "date": "2026-08-09", "name_key": "e_annada", "link": "e_annada.html" },
+        { "date": "2026-08-23", "name_key": "e_parivar", "link": "e_parivar.html" },
+        { "date": "2026-09-07", "name_key": "e_indira", "link": "e_indira.html" },
+        { "date": "2026-09-22", "name_key": "e_papanku", "link": "e_papanku.html" },
+        { "date": "2026-10-06", "name_key": "e_rama", "link": "e_rama.html" },
+        { "date": "2026-10-21", "name_key": "e_prabod", "link": "e_prabod.html" },
+        { "date": "2026-11-05", "name_key": "e_utpanna", "link": "e_utpanna.html" },
+        { "date": "2026-11-19", "name_key": "e_mokshada", "link": "e_mokshada.html" },
+        { "date": "2026-12-04", "name_key": "e_saphala", "link": "e_saphala.html" },
+        { "date": "2026-12-19", "name_key": "e_putrada", "link": "e_putrada.html" },
         /* 2027 */
-        { "date": "2027-01-03", "name_key": "e_shattila", "link": "go:e_shattila" },
-        { "date": "2027-01-18", "name_key": "e_jaya", "link": "go:e_jaya" },
-        { "date": "2027-02-01", "name_key": "e_vijaya", "link": "go:e_vijaya" },
-        { "date": "2027-02-17", "name_key": "e_amalaki", "link": "go:e_amalaki" },
-        { "date": "2027-03-03", "name_key": "e_papmoch", "link": "go:e_papmoch" },
-        { "date": "2027-03-19", "name_key": "e_kamada", "link": "go:e_kamada" },
-        { "date": "2027-04-02", "name_key": "e_varuthi", "link": "go:e_varuthi" },
-        { "date": "2027-04-17", "name_key": "e_mohini", "link": "go:e_mohini" },
-        { "date": "2027-05-01", "name_key": "e_apara", "link": "go:e_apara" },
-        { "date": "2027-05-17", "name_key": "e_nirjala", "link": "go:e_nirjala" },
-        { "date": "2027-05-31", "name_key": "e_yogini", "link": "go:e_yogini" },
-        { "date": "2027-06-15", "name_key": "e_sayana", "link": "go:e_sayana" },
-        { "date": "2027-06-29", "name_key": "e_kamika", "link": "go:e_kamika" },
-        { "date": "2027-07-14", "name_key": "e_pavitra", "link": "go:e_pavitra" },
-        { "date": "2027-07-29", "name_key": "e_annada", "link": "go:e_annada" },
-        { "date": "2027-08-12", "name_key": "e_parivar", "link": "go:e_parivar" },
-        { "date": "2027-08-27", "name_key": "e_indira", "link": "go:e_indira" },
-        { "date": "2027-09-10", "name_key": "e_papanku", "link": "go:e_papanku" },
-        { "date": "2027-09-26", "name_key": "e_rama", "link": "go:e_rama" },
-        { "date": "2027-10-10", "name_key": "e_prabod", "link": "go:e_prabod" },
-        { "date": "2027-10-25", "name_key": "e_utpanna", "link": "go:e_utpanna" },
-        { "date": "2027-11-08", "name_key": "e_mokshada", "link": "go:e_mokshada" },
-        { "date": "2027-11-23", "name_key": "e_saphala", "link": "go:e_saphala" },
-        { "date": "2027-12-08", "name_key": "e_putrada", "link": "go:e_putrada" }
+        { "date": "2027-01-03", "name_key": "e_shattila", "link": "e_shattila.html" },
+        { "date": "2027-01-18", "name_key": "e_jaya", "link": "e_jaya.html" },
+        { "date": "2027-02-01", "name_key": "e_vijaya", "link": "e_vijaya.html" },
+        { "date": "2027-02-17", "name_key": "e_amalaki", "link": "e_amalaki.html" },
+        { "date": "2027-03-03", "name_key": "e_papmoch", "link": "e_papmoch.html" },
+        { "date": "2027-03-19", "name_key": "e_kamada", "link": "e_kamada.html" },
+        { "date": "2027-04-02", "name_key": "e_varuthi", "link": "e_varuthi.html" },
+        { "date": "2027-04-17", "name_key": "e_mohini", "link": "e_mohini.html" },
+        { "date": "2027-05-01", "name_key": "e_apara", "link": "e_apara.html" },
+        { "date": "2027-05-17", "name_key": "e_nirjala", "link": "e_nirjala.html" },
+        { "date": "2027-05-31", "name_key": "e_yogini", "link": "e_yogini.html" },
+        { "date": "2027-06-15", "name_key": "e_sayana", "link": "e_sayana.html" },
+        { "date": "2027-06-29", "name_key": "e_kamika", "link": "e_kamika.html" },
+        { "date": "2027-07-14", "name_key": "e_pavitra", "link": "e_pavitra.html" },
+        { "date": "2027-07-29", "name_key": "e_annada", "link": "e_annada.html" },
+        { "date": "2027-08-12", "name_key": "e_parivar", "link": "e_parivar.html" },
+        { "date": "2027-08-27", "name_key": "e_indira", "link": "e_indira.html" },
+        { "date": "2027-09-10", "name_key": "e_papanku", "link": "e_papanku.html" },
+        { "date": "2027-09-26", "name_key": "e_rama", "link": "e_rama.html" },
+        { "date": "2027-10-10", "name_key": "e_prabod", "link": "e_prabod.html" },
+        { "date": "2027-10-25", "name_key": "e_utpanna", "link": "e_utpanna.html" },
+        { "date": "2027-11-08", "name_key": "e_mokshada", "link": "e_mokshada.html" },
+        { "date": "2027-11-23", "name_key": "e_saphala", "link": "e_saphala.html" },
+        { "date": "2027-12-08", "name_key": "e_putrada", "link": "e_putrada.html" }
     ];
 
     // === LOGIC ===
@@ -542,9 +544,9 @@
             let captionHTML = '';
             
             if (img.type === 'birthday') {
-                captionHTML = `<div class="slide-caption"><div class="bday-text">🎂 Happy Birthday ${img.title} 🎂</div></div>`;
+                captionHTML = `<div class="slide-caption"><div class="bday-text">ðŸŽ‚ Happy Birthday ${img.title} ðŸŽ‚</div></div>`;
             } else if (img.type === 'notice') {
-                captionHTML = `<div class="slide-caption"><div class="notice-text">📢 ${img.title}</div></div>`;
+                captionHTML = `<div class="slide-caption"><div class="notice-text">ðŸ“¢ ${img.title}</div></div>`;
             }
 
             html += `
@@ -564,16 +566,16 @@
             e_mokshada: "Mokshada Ekadashi", e_saphala: "Saphala Ekadashi", e_putrada: "Putrada Ekadashi", e_shattila: "Shattila Ekadashi", e_jaya: "Jaya Ekadashi", e_vijaya: "Vijaya Ekadashi", e_amalaki: "Amalaki Ekadashi", e_papmoch: "Papmochani Ekadashi", e_kamada: "Kamada Ekadashi", e_varuthi: "Varuthini Ekadashi", e_mohini: "Mohini Ekadashi", e_apara: "Apara Ekadashi", e_nirjala: "Nirjala Ekadashi", e_yogini: "Yogini Ekadashi", e_sayana: "Sayana Ekadashi", e_kamika: "Kamika Ekadashi", e_pavitra: "Pavitropana Ekadashi", e_annada: "Annada Ekadashi", e_parivar: "Parivartini Ekadashi", e_indira: "Indira Ekadashi", e_papanku: "Papankusha Ekadashi", e_rama: "Rama Ekadashi", e_prabod: "Prabodhini Ekadashi", e_utpanna: "Utpanna Ekadashi"
         },
         hi: {
-            app_name: "इस्कॉन हडपसर", menu_title: "मेनू", home: "होम", schedule: "समय सारणी", darshan: "लाइव दर्शन", gallery: "गैलरी", videos: "मंदिर वीडियो", kirtan: "कीर्तन", lectures: "प्रवचन", contact: "संपर्क", about: "हमारे बारे में", notif: "सूचनाएं", share: "शेयर करें", dark: "डार्क मोड", visit: "पधारें", gallery_h: "फोटो गैलरी", videos_h: "मंदिर वीडियो", kirtan_h: "नवीनतम कीर्तन", lecture_h: "दिव्य प्रवचन", see_all: "सभी देखें", visit_h: "हमारे मंदिर पधारें", copy: "कॉपी", map: "मैप", privacy: "गोपनीयता नीति", terms: "नियम", mantra: "हरे कृष्ण हरे कृष्ण कृष्ण कृष्ण हरे हरे\nहरे राम हरे राम राम राम हरे हरे", credit: "डिज़ाइन और विकसित: ",
-            today_is: "आज है", tom_is: "कल है", read_more: "महात्म्य पढ़ें", status: "दान", japa: "डिजिटल माला",
-            kids: "बाल गोपाल", pune_temples: "पुणे के मंदिर", pune_temples_home: "पुणे के सभी मंदिर", tour: "मंदिर दर्शन (Tour)",
-            e_mokshada: "मोक्षदा एकादशी", e_saphala: "सफला एकादशी", e_putrada: "पुत्रदा एकादशी", e_shattila: "षटतिला एकादशी", e_jaya: "जया एकादशी", e_vijaya: "विजया एकादशी", e_amalaki: "आमलकी एकादशी", e_papmoch: "पापमोचनी एकादशी", e_kamada: "कामदा एकादशी", e_varuthi: "वरुथिनी एकादशी", e_mohini: "मोहिनी एकादशी", e_apara: "अपरा एकादशी", e_nirjala: "निर्जला एकादशी", e_yogini: "योगिनी एकादशी", e_sayana: "शयन एकादशी", e_kamika: "कामिका एकादशी", e_pavitra: "पवित्रोपना एकादशी", e_annada: "अन्नदा एकादशी", e_parivar: "परिवर्तिनी एकादशी", e_indira: "इंदिरा एकादशी", e_papanku: "पापांकुशा एकादशी", e_rama: "रमा एकादशी", e_prabod: "प्रबोधिनी एकादशी", e_utpanna: "उत्पन्ना एकादशी"
+            app_name: "à¤‡à¤¸à¥ à¤•à¥‰à¤¨ à¤¹à¤¡à¤ªà¤¸à¤°", menu_title: "à¤®à¥‡à¤¨à¥‚", home: "à¤¹à¥‹à¤®", schedule: "à¤¸à¤®à¤¯ à¤¸à¤¾à¤°à¤£à¥€", darshan: "à¤²à¤¾à¤‡à¤µ à¤¦à¤°à¥ à¤¶à¤¨", gallery: "à¤—à¥ˆà¤²à¤°à¥€", videos: "à¤®à¤‚à¤¦à¤¿à¤° à¤µà¥€à¤¡à¤¿à¤¯à¥‹", kirtan: "à¤•à¥€à¤°à¥ à¤¤à¤¨", lectures: "à¤ªà¥ à¤°à¤µà¤šà¤¨", contact: "à¤¸à¤‚à¤ªà¤°à¥ à¤•", about: "à¤¹à¤®à¤¾à¤°à¥‡ à¤¬à¤¾à¤°à¥‡ à¤®à¥‡à¤‚", notif: "à¤¸à¥‚à¤šà¤¨à¤¾à¤ à¤‚", share: "à¤¶à¥‡à¤¯à¤° à¤•à¤°à¥‡à¤‚", dark: "à¤¡à¤¾à¤°à¥ à¤• à¤®à¥‹à¤¡", visit: "à¤ªà¤§à¤¾à¤°à¥‡à¤‚", gallery_h: "à¤«à¥‹à¤Ÿà¥‹ à¤—à¥ˆà¤²à¤°à¥€", videos_h: "à¤®à¤‚à¤¦à¤¿à¤° à¤µà¥€à¤¡à¤¿à¤¯à¥‹", kirtan_h: "à¤¨à¤µà¥€à¤¨à¤¤à¤® à¤•à¥€à¤°à¥ à¤¤à¤¨", lecture_h: "à¤¦à¤¿à¤µà¥ à¤¯ à¤ªà¥ à¤°à¤µà¤šà¤¨", see_all: "à¤¸à¤­à¥€ à¤¦à¥‡à¤–à¥‡à¤‚", visit_h: "à¤¹à¤®à¤¾à¤°à¥‡ à¤®à¤‚à¤¦à¤¿à¤° à¤ªà¤§à¤¾à¤°à¥‡à¤‚", copy: "à¤•à¥‰à¤ªà¥€", map: "à¤®à¥ˆà¤ª", privacy: "à¤—à¥‹à¤ªà¤¨à¥€à¤¯à¤¤à¤¾ à¤¨à¥€à¤¤à¤¿", terms: "à¤¨à¤¿à¤¯à¤®", mantra: "à¤¹à¤°à¥‡ à¤•à¥ƒà¤·à¥ à¤£ à¤¹à¤°à¥‡ à¤•à¥ƒà¤·à¥ à¤£ à¤•à¥ƒà¤·à¥ à¤£ à¤•à¥ƒà¤·à¥ à¤£ à¤¹à¤°à¥‡ à¤¹à¤°à¥‡\nà¤¹à¤°à¥‡ à¤°à¤¾à¤® à¤¹à¤°à¥‡ à¤°à¤¾à¤® à¤°à¤¾à¤® à¤°à¤¾à¤® à¤¹à¤°à¥‡ à¤¹à¤°à¥‡", credit: "à¤¡à¤¿à¤œà¤¼à¤¾à¤‡à¤¨ à¤”à¤° à¤µà¤¿à¤•à¤¸à¤¿à¤¤: ",
+            today_is: "à¤†à¤œ à¤¹à¥ˆ", tom_is: "à¤•à¤² à¤¹à¥ˆ", read_more: "à¤®à¤¹à¤¾à¤¤à¥ à¤®à¥ à¤¯ à¤ªà¤¢à¤¼à¥‡à¤‚", status: "à¤¦à¤¾à¤¨", japa: "à¤¡à¤¿à¤œà¤¿à¤Ÿà¤² à¤®à¤¾à¤²à¤¾",
+            kids: "à¤¬à¤¾à¤² à¤—à¥‹à¤ªà¤¾à¤²", pune_temples: "à¤ªà¥ à¤£à¥‡ à¤•à¥‡ à¤®à¤‚à¤¦à¤¿à¤°", pune_temples_home: "à¤ªà¥ à¤£à¥‡ à¤•à¥‡ à¤¸à¤­à¥€ à¤®à¤‚à¤¦à¤¿à¤°", tour: "à¤®à¤‚à¤¦à¤¿à¤° à¤¦à¤°à¥ à¤¶à¤¨ (Tour)",
+            e_mokshada: "à¤®à¥‹à¤•à¥ à¤·à¤¦à¤¾ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_saphala: "à¤¸à¤«à¤²à¤¾ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_putrada: "à¤ªà¥ à¤¤à¥ à¤°à¤¦à¤¾ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_shattila: "à¤·à¤Ÿà¤¤à¤¿à¤²à¤¾ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_jaya: "à¤œà¤¯à¤¾ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_vijaya: "à¤µà¤¿à¤œà¤¯à¤¾ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_amalaki: "à¤†à¤®à¤²à¤•à¥€ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_papmoch: "à¤ªà¤¾à¤ªà¤®à¥‹à¤šà¤¨à¥€ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_kamada: "à¤•à¤¾à¤®à¤¦à¤¾ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_varuthi: "à¤µà¤°à¥ à¤¥à¤¿à¤¨à¥€ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_mohini: "à¤®à¥‹à¤¹à¤¿à¤¨à¥€ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_apara: "à¤…à¤ªà¤°à¤¾ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_nirjala: "à¤¨à¤¿à¤°à¥ à¤œà¤²à¤¾ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_yogini: "à¤¯à¥‹à¤—à¤¿à¤¨à¥€ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_sayana: "à¤¶à¤¯à¤¨ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_kamika: "à¤•à¤¾à¤®à¤¿à¤•à¤¾ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_pavitra: "à¤ªà¤µà¤¿à¤¤à¥ à¤°à¥‹à¤ªà¤¨à¤¾ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_annada: "à¤…à¤¨à¥ à¤¨à¤¦à¤¾ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_parivar: "à¤ªà¤°à¤¿à¤µà¤°à¥ à¤¤à¤¿à¤¨à¥€ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_indira: "à¤‡à¤‚à¤¦à¤¿à¤°à¤¾ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_papanku: "à¤ªà¤¾à¤ªà¤¾à¤‚à¤•à¥ à¤¶à¤¾ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_rama: "à¤°à¤®à¤¾ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_prabod: "à¤ªà¥ à¤°à¤¬à¥‹à¤§à¤¿à¤¨à¥€ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_utpanna: "à¤‰à¤¤à¥ à¤ªà¤¨à¥ à¤¨à¤¾ à¤ à¤•à¤¾à¤¦à¤¶à¥€"
         },
         mr: {
-            app_name: "इस्कॉन हडपसर", menu_title: "मेनू", home: "मुख्यपृष्ठ", schedule: "वेळापत्रक", darshan: "थेट दर्शन", gallery: "गॅलरी", videos: "मंदिर व्हिडिओ", kirtan: "कीर्तन", lectures: "प्रवचन", contact: "संपर्क", about: "आमच्याबद्दल", notif: "सूचना", share: "शेअर करा", dark: "डार्क मोड", visit: "भेट द्या", gallery_h: "फोटो गॅलरी", videos_h: "मंदिर व्हिडिओ", kirtan_h: "नवीनतम कीर्तन", lecture_h: "दिव्य प्रवचन", see_all: "सर्व पहा", visit_h: "आमच्या मंदिरात या", copy: "कॉपी", map: "नकाशा", privacy: "गोपनीयता धोरण", terms: "अटी", mantra: "हरे कृष्ण हरे कृष्ण कृष्ण कृष्ण हरे हरे\nहरे राम हरे राम राम राम हरे हरे", credit: "डिझाइन आणि विकसित: ",
-            today_is: "आज आहे", tom_is: "उद्या आहे", read_more: "अधिक वाचा", status: "दान", japa: "डिजिटल माळ",
-            kids: "बाल संस्कार", pune_temples: "पुण्यातील मंदिरे", pune_temples_home: "पुण्यातील सर्व मंदिरे", tour: "मंदिर सफर (Tour)",
-            e_mokshada: "मोक्षदा एकादशी", e_saphala: "सफला एकादशी", e_putrada: "पुत्रदा एकादशी", e_shattila: "षटतिला एकादशी", e_jaya: "जया एकादशी", e_vijaya: "विजया एकादशी", e_amalaki: "आमलकी एकादशी", e_papmoch: "पापमोचनी एकादशी", e_kamada: "कामदा एकादशी", e_varuthi: "वरुथिनी एकादशी", e_mohini: "मोहिनी एकादशी", e_apara: "अपरा एकादशी", e_nirjala: "निर्जला एकादशी", e_yogini: "योगिनी एकादशी", e_sayana: "शयन एकादशी", e_kamika: "कामिका एकादशी", e_pavitra: "पवित्रोपना एकादशी", e_annada: "अन्नदा एकादशी", e_parivar: "परिवर्तिनी एकादशी", e_indira: "इंदिरा एकादशी", e_papanku: "पापांकुशा एकादशी", e_rama: "रमा एकादशी", e_prabod: "प्रबोधिनी एकादशी", e_utpanna: "उत्पन्ना एकादशी"
+            app_name: "à¤‡à¤¸à¥ à¤•à¥‰à¤¨ à¤¹à¤¡à¤ªà¤¸à¤°", menu_title: "à¤®à¥‡à¤¨à¥‚", home: "à¤®à¥ à¤–à¥ à¤¯à¤ªà¥ƒà¤·à¥ à¤ ", schedule: "à¤µà¥‡à¤³à¤¾à¤ªà¤¤à¥ à¤°à¤•", darshan: "à¤¥à¥‡à¤Ÿ à¤¦à¤°à¥ à¤¶à¤¨", gallery: "à¤—à¥…à¤²à¤°à¥€", videos: "à¤®à¤‚à¤¦à¤¿à¤° à¤µà¥ à¤¹à¤¿à¤¡à¤¿à¤“", kirtan: "à¤•à¥€à¤°à¥ à¤¤à¤¨", lectures: "à¤ªà¥ à¤°à¤µà¤šà¤¨", contact: "à¤¸à¤‚à¤ªà¤°à¥ à¤•", about: "à¤†à¤®à¤šà¥ à¤¯à¤¾à¤¬à¤¦à¥ à¤¦à¤²", notif: "à¤¸à¥‚à¤šà¤¨à¤¾", share: "à¤¶à¥‡à¤…à¤° à¤•à¤°à¤¾", dark: "à¤¡à¤¾à¤°à¥ à¤• à¤®à¥‹à¤¡", visit: "à¤­à¥‡à¤Ÿ à¤¦à¥ à¤¯à¤¾", gallery_h: "à¤«à¥‹à¤Ÿà¥‹ à¤—à¥…à¤²à¤°à¥€", videos_h: "à¤®à¤‚à¤¦à¤¿à¤° à¤µà¥ à¤¹à¤¿à¤¡à¤¿à¤“", kirtan_h: "à¤¨à¤µà¥€à¤¨à¤¤à¤® à¤•à¥€à¤°à¥ à¤¤à¤¨", lecture_h: "à¤¦à¤¿à¤µà¥ à¤¯ à¤ªà¥ à¤°à¤µà¤šà¤¨", see_all: "à¤¸à¤°à¥ à¤µ à¤ªà¤¹à¤¾", visit_h: "à¤†à¤®à¤šà¥ à¤¯à¤¾ à¤®à¤‚à¤¦à¤¿à¤°à¤¾à¤¤ à¤¯à¤¾", copy: "à¤•à¥‰à¤ªà¥€", map: "à¤¨à¤•à¤¾à¤¶à¤¾", privacy: "à¤—à¥‹à¤ªà¤¨à¥€à¤¯à¤¤à¤¾ à¤§à¥‹à¤°à¤£", terms: "à¤…à¤Ÿà¥€", mantra: "à¤¹à¤°à¥‡ à¤•à¥ƒà¤·à¥ à¤£ à¤¹à¤°à¥‡ à¤•à¥ƒà¤·à¥ à¤£ à¤•à¥ƒà¤·à¥ à¤£ à¤•à¥ƒà¤·à¥ à¤£ à¤¹à¤°à¥‡ à¤¹à¤°à¥‡\nà¤¹à¤°à¥‡ à¤°à¤¾à¤® à¤¹à¤°à¥‡ à¤°à¤¾à¤® à¤°à¤¾à¤® à¤°à¤¾à¤® à¤¹à¤°à¥‡ à¤¹à¤°à¥‡", credit: "à¤¡à¤¿à¤ à¤¾à¤‡à¤¨ à¤†à¤£à¤¿ à¤µà¤¿à¤•à¤¸à¤¿à¤¤: ",
+            today_is: "à¤†à¤œ à¤†à¤¹à¥‡", tom_is: "à¤‰à¤¦à¥ à¤¯à¤¾ à¤†à¤¹à¥‡", read_more: "à¤…à¤§à¤¿à¤• à¤µà¤¾à¤šà¤¾", status: "à¤¦à¤¾à¤¨", japa: "à¤¡à¤¿à¤œà¤¿à¤Ÿà¤² à¤®à¤¾à¤³",
+            kids: "à¤¬à¤¾à¤² à¤¸à¤‚à¤¸à¥ à¤•à¤¾à¤°", pune_temples: "à¤ªà¥ à¤£à¥ à¤¯à¤¾à¤¤à¥€à¤² à¤®à¤‚à¤¦à¤¿à¤°à¥‡", pune_temples_home: "à¤ªà¥ à¤£à¥ à¤¯à¤¾à¤¤à¥€à¤² à¤¸à¤°à¥ à¤µ à¤®à¤‚à¤¦à¤¿à¤°à¥‡", tour: "à¤®à¤‚à¤¦à¤¿à¤° à¤¸à¤«à¤° (Tour)",
+            e_mokshada: "à¤®à¥‹à¤•à¥ à¤·à¤¦à¤¾ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_saphala: "à¤¸à¤«à¤²à¤¾ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_putrada: "à¤ªà¥ à¤¤à¥ à¤°à¤¦à¤¾ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_shattila: "à¤·à¤Ÿà¤¤à¤¿à¤²à¤¾ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_jaya: "à¤œà¤¯à¤¾ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_vijaya: "à¤µà¤¿à¤œà¤¯à¤¾ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_amalaki: "à¤†à¤®à¤²à¤•à¥€ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_papmoch: "à¤ªà¤¾à¤ªà¤®à¥‹à¤šà¤¨à¥€ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_kamada: "à¤•à¤¾à¤®à¤¦à¤¾ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_varuthi: "à¤µà¤°à¥ à¤¥à¤¿à¤¨à¥€ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_mohini: "à¤®à¥‹à¤¹à¤¿à¤¨à¥€ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_apara: "à¤…à¤ªà¤°à¤¾ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_nirjala: "à¤¨à¤¿à¤°à¥ à¤œà¤²à¤¾ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_yogini: "à¤¯à¥‹à¤—à¤¿à¤¨à¥€ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_sayana: "à¤¶à¤¯à¤¨ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_kamika: "à¤•à¤¾à¤®à¤¿à¤•à¤¾ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_pavitra: "à¤ªà¤µà¤¿à¤¤à¥ à¤°à¥‹à¤ªà¤¨à¤¾ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_annada: "à¤…à¤¨à¥ à¤¨à¤¦à¤¾ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_parivar: "à¤ªà¤°à¤¿à¤µà¤°à¥ à¤¤à¤¿à¤¨à¥€ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_indira: "à¤‡à¤‚à¤¦à¤¿à¤°à¤¾ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_papanku: "à¤ªà¤¾à¤ªà¤¾à¤‚à¤•à¥ à¤¶à¤¾ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_rama: "à¤°à¤®à¤¾ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_prabod: "à¤ªà¥ à¤°à¤¬à¥‹à¤§à¤¿à¤¨à¥€ à¤ à¤•à¤¾à¤¦à¤¶à¥€", e_utpanna: "à¤‰à¤¤à¥ à¤ªà¤¨à¥ à¤¨à¤¾ à¤ à¤•à¤¾à¤¦à¤¶à¥€"
         }
     };
 
